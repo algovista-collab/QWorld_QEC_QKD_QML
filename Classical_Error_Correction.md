@@ -277,7 +277,7 @@ $$d_H(\mathbf{s}, \mathbf{t}) = \sum_{i} \mathbf{s}_i + \mathbf{t}_i$$
 *Note: The addition inside the sum is in the binary field (XOR), but the final summation is regular integer addition.*
 
 ### Example
-The distance between **1011** and **0111** is **two**.
+The distance between **1011** and **0111** is **two**. 1011 + 0111 = 1100 (There are two 1s, hence d is 2)
 * Position 1: $1 \neq 0$ (Different)
 * Position 2: $0 \neq 1$ (Different)
 * Position 3: $1 = 1$ (Same)
@@ -287,5 +287,5 @@ The distance between **1011** and **0111** is **two**.
 ---
 
 ## Significance in Error Correction
-* **Correction Threshold:** If the distance is small, it is possible to correct the error.
-* **Correction Limit:** If the distance of the error is larger than a specific threshold value (the "distance of the code"), the error cannot be corrected.
+* **Small Distance:** If the distance between valid codewords is small, noise can easily transform one valid codeword into another (or something very close to it), making the error impossible to correct.
+* **Large Distance:** A larger distance allows the code to tolerate more bit flips while still being able to "map" the corrupted version back to the original intended codeword. Because the corrupted codeword will still be closer to the correct valid codeword and for smaller distance between codewords, it can equal distance from 2 valid codewords making it impossible to recover the correct codeword.
