@@ -45,3 +45,47 @@ Bob uses a **Majority Voting Algorithm** to decode the received blocks. He ident
 The repetition code is effective only if the number of errors in a block is **less than half** the block size. 
 * In a 3-bit code, **1 error** is corrected.
 * In a 3-bit code, **2 or more errors** lead to an incorrect decoding.
+
+# Probability Analysis of the Repetition Code ($n=3$)
+
+To evaluate the effectiveness of the repetition code, we use the **Binomial Distribution**. We assume each bit has an independent probability $p$ of being flipped (an error) and a probability $1-p$ of being transmitted correctly.
+
+---
+
+## 1. Probability of Errors in a 3-Bit Block
+The probability of exactly $k$ errors occurring in a block of $n=3$ bits is calculated using the formula:  
+$P(k) = \binom{n}{k} p^k (1-p)^{n-k}$
+
+| Number of Errors ($k$) | Calculation | Probability Expression |
+| :--- | :--- | :--- |
+| **Zero Errors** | $\binom{3}{0} p^0 (1-p)^3$ | $(1-p)^3$ |
+| **One Error** | $\binom{3}{1} p^1 (1-p)^2$ | $3p(1-p)^2$ |
+| **Two Errors** | $\binom{3}{2} p^2 (1-p)^1$ | $3p^2(1-p)$ |
+| **Three Errors** | $\binom{3}{3} p^3 (1-p)^0$ | $p^3$ |
+
+---
+
+## 2. When is Error Correction Beneficial?
+
+The repetition code is beneficial only when the probability of the decoded bit being correct ($P_{code}$) is higher than the probability of a single unprotected bit being correct ($P_{naive}$).
+
+* **Decoded Correctness ($P_{code}$):** Bob is correct if there are **0 or 1** errors.  
+  $P_{code} = (1-p)^3 + 3p(1-p)^2$
+* **Naive Correctness ($P_{naive}$):** Bob is correct if the single bit isn't flipped.  
+  $P_{naive} = 1-p$
+
+### The Threshold: $p = 0.5$
+Mathematical analysis shows that the repetition code helps when **$p < 0.5$**.
+
+1. **If $p < 0.5$:** The physical error rate is low. It is statistically likely that the "majority" of the three bits will remain unchanged. The code effectively "filters" out single-bit flips.
+2. **If $p > 0.5$:** The channel is so noisy that it flips bits more often than not. In this case, the majority of the bits in a block are likely to be errors. Using a repetition code here actually **increases** the chance of Bob receiving the wrong message.
+3. **If $p = 0.5$:** The channel is pure noise (like a fair coin flip). No amount of repetition can recover the information because the input and output are statistically independent.
+
+
+
+---
+
+## 3. Why the Code Can Be "Worse"
+It seems counterintuitive, but if $p > 0.5$, Alice is essentially sending her message through a "Liar Channel." Because the majority voting algorithm *trusts* the most frequent bit, it will consistently choose the error over the truth. 
+
+In a high-noise environment ($p=0.8$), sending more bits simply gives the channel more opportunities to "outvote" the correct bit, compounding the original error.
