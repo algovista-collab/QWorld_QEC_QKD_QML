@@ -185,3 +185,62 @@ Because each message bit belongs to a unique combination of parity sets, Bob can
 | **Hamming** | 7 | 4 | 3 | Corrects 1 bit |
 
 *Note: To protect 4 bits with a repetition code, you would need 12 bits total. Hamming does the same job with only 7.*
+
+# Systematic Error Correction: Parity-Check Matrices and Syndromes
+
+To identify and correct errors without guessing, linear codes use the properties of linear algebra to "extract" noise from a received message.
+
+---
+
+## 1. Information Allocation
+In any $[n, k]$ code, the $n$ bits of a codeword are divided by purpose:
+* **$k$ bits**: Carry the actual message information.
+* **$n - k$ bits**: Provide redundancy used to identify errors.
+
+Because there are $n - k$ bits of redundancy, the code can distinguish between $2^{n-k}$ different error scenarios (including the "no error" scenario).
+
+
+
+---
+
+## 2. The Parity-Check Matrix ($H$)
+The matrix $H$ acts as the mathematical "gatekeeper" of the code. It defines the consistency checks that every valid codeword must satisfy.
+
+* **Definition:** A vector $c$ is a valid codeword if and only if:
+  $$H \cdot c^T = 0$$
+* **Dimensions:** $H$ is an $(n-k) \times n$ matrix.
+* **Uniqueness:** $H$ is not unique; row operations can create different versions of the same parity-check matrix for the same code.
+
+---
+
+## 3. Error Syndromes
+When Alice sends codeword $c$ and Bob receives $c'$, the received signal is $c' = c + e$ (where $e$ is the error vector). Bob calculates the **Syndrome ($s$)** to isolate the error:
+
+$$s = H \cdot c'$$
+
+### How the Math Works:
+Since $c' = c + e$, we can expand the equation:
+1. $s = H(c + e)$
+2. $s = Hc + He$
+3. Since $Hc = 0$ (by definition of a codeword), then **$s = He$**.
+
+**The Result:** The syndrome depends *only* on the error vector $e$, not the original message $m$. This allows Bob to identify the noise regardless of what Alice actually said.
+
+---
+
+## 4. Correcting the Error
+Each correctable error pattern corresponds to a distinct, non-zero syndrome. 
+
+### Example: Hamming (7,4) Code
+* **Redundancy:** $n - k = 3$ bits.
+* **Syndromes:** $2^3 = 8$ possible syndromes.
+* **Correction Capacity:** * 1 syndrome for "No Error" $(0,0,0)$.
+    * 7 syndromes to uniquely identify which of the 7 bits was flipped.
+
+
+
+### The Recovery Process:
+1. Bob receives $c'$.
+2. Bob computes $s = Hc'$.
+3. Bob looks up $s$ in a table to find the corresponding error vector $e$.
+4. Bob recovers the message: $c = c' - e$.
