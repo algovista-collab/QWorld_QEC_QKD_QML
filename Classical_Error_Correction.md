@@ -132,7 +132,7 @@ An error-correcting code involves mapping data between distinct vector spaces ov
 
 ## 2. The Encoding Process & Generator Matrix
 
-To move a message $\bar{m}$ into the code $C$, we use a **Generator Matrix ($G$)**.
+To move a message $\bar{m}$ into the code $C$, we use a **Generator Matrix ($G$)**. The first four bits have to be copied as is, so the first four columns of G must be the identity matrix. The next three columns must be the various ways of summing up the data bits.
 
 * **Definition:**
 
