@@ -244,3 +244,15 @@ Each correctable error pattern corresponds to a distinct, non-zero syndrome.
 2. Bob computes $s = Hc'$.
 3. Bob looks up $s$ in a table to find the corresponding error vector $e$.
 4. Bob recovers the message: $c = c' - e$.
+
+### Formula for the Parity-Check Matrix ($H$)
+
+For a linear code in **standard form**, the matrices $G$ and $H$ are related as follows:
+
+1. **Generator Matrix ($G$):** $[I_k \mid P]$
+2. **Parity-Check Matrix ($H$):** $[P^T \mid I_{n-k}]$
+
+**Orthogonality Property:**
+The core requirement for these matrices is:
+$$G \cdot H^T = 0 \pmod 2$$
+This ensures that every valid codeword $c$ satisfies the parity equations: $H \cdot c^T = 0$.
