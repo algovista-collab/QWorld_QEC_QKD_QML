@@ -134,7 +134,10 @@ An error-correcting code involves mapping data between distinct vector spaces ov
 
 To move a message $\bar{m}$ into the code $C$, we use a **Generator Matrix ($G$)**.
 
-* **Definition:** $G$ is a $k \times n$ matrix whose rows form a basis for $C$.
+* **Definition:**
+
+$G$ is a $k \times n$ matrix whose rows form a basis for $C$.
+
 * **Procedure:** A message vector $m$ is encoded as $c = mG$.
 
 ### Example: Repetition Code ($k=1, n=3$)
