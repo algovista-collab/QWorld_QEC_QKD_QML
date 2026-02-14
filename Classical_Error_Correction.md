@@ -89,3 +89,18 @@ Mathematical analysis shows that the repetition code helps when **$p < 0.5$**.
 It seems counterintuitive, but if $p > 0.5$, Alice is essentially sending her message through a "Liar Channel." Because the majority voting algorithm *trusts* the most frequent bit, it will consistently choose the error over the truth. 
 
 In a high-noise environment ($p=0.8$), sending more bits simply gives the channel more opportunities to "outvote" the correct bit, compounding the original error.
+
+## Logical Operations on Repetition Codes
+
+To perform logic on encoded messages without decoding, apply the operation **bitwise** to the blocks.
+
+### NOT Operation
+Apply NOT to every bit in the $n$-bit block:
+- `000` becomes `111`
+- `111` becomes `000`
+- `010` (corrupted 0) becomes `101` (corrupted 1)
+
+### OR Operation
+Compare two blocks bit-by-bit using the standard OR truth table:
+- `000` OR `111` = `111`
+- `100` (corrupted 0) OR `000` = `100` (still decodes to 0)
