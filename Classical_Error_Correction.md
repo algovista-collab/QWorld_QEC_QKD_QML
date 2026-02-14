@@ -142,7 +142,9 @@ $G$ is a $k \times n$ matrix whose rows form a basis for $C$.
 
 ### Example: Repetition Code ($k=1, n=3$)
 The generator matrix is:
+
 $$G = \begin{pmatrix} 1 & 1 & 1 \end{pmatrix}$$
+
 - Message `[0]` becomes `[0,0,0]`
 - Message `[1]` becomes `[1,1,1]`
 
