@@ -104,3 +104,79 @@ Apply NOT to every bit in the $n$-bit block:
 Compare two blocks bit-by-bit using the standard OR truth table:
 - `000` OR `111` = `111`
 - `100` (corrupted 0) OR `000` = `100` (still decodes to 0)
+
+# Linear Block Codes: From Repetition to Hamming
+
+This document outlines the vector space foundations of error-correction and the transition from simple repetition to efficient Hamming codes.
+
+---
+
+## 1. Mathematical Definitions
+
+An error-correcting code involves mapping data between distinct vector spaces over the binary field $\mathbb{F}_2$.
+
+| Space | Symbol | Dimension | Description |
+| :--- | :---: | :---: | :--- |
+| **Message Space** | $\mathbb{F}_2^k$ | $k$ | The space of original information bits (length $k$). |
+| **Codespace** | $\mathbb{F}_2^n$ | $n$ | The space of all possible bit strings of length $n$. |
+| **The Code ($C$)** | $C \subseteq \mathbb{F}_2^n$ | $k$ | The $k$-dimensional subspace containing valid codewords. |
+
+**Key Concept:** A code is an $[n, k, d]$ system where:
+- $n$ = Codeword length
+- $k$ = Message length
+- $d$ = Minimum distance (the minimum number of bit flips to turn one valid codeword into another).
+
+**Repetition Code Label:** For a 3-bit repetition code, the label is $[3, 1, 3]$.
+
+---
+
+## 2. The Encoding Process & Generator Matrix
+
+To move a message $\bar{m}$ into the code $C$, we use a **Generator Matrix ($G$)**.
+
+* **Definition:** $G$ is a $k \times n$ matrix whose rows form a basis for $C$.
+* **Procedure:** A message vector $m$ is encoded as $c = mG$.
+
+### Example: Repetition Code ($k=1, n=3$)
+The generator matrix is:
+$$G = \begin{pmatrix} 1 & 1 & 1 \end{pmatrix}$$
+- Message `[0]` becomes `[0,0,0]`
+- Message `[1]` becomes `[1,1,1]`
+
+### Standard Form
+Any generator matrix can be reduced to **Standard Form**: 
+$$G = [I_k \mid P]$$
+Where $I_k$ is the $k \times k$ identity matrix (keeping message bits visible) and $P$ is the $k \times (n-k)$ parity-check matrix.
+
+---
+
+## 3. The Hamming(7,4) Code
+
+The Hamming code is a powerful $[7, 4, 3]$ code. It encodes 4 message bits into 7-bit codewords using **overlapping parity**.
+
+
+
+### The Codeword Structure
+A codeword $x$ consists of message bits $(x_1, x_2, x_3, x_4)$ and parity bits $(x_5, x_6, x_7)$:
+1. **$x_5$** = Parity of $\{x_1, x_2, x_3\}$
+2. **$x_6$** = Parity of $\{x_2, x_3, x_4\}$
+3. **$x_7$** = Parity of $\{x_1, x_3, x_4\}$
+
+### Error Correction Protocol
+Bob (the receiver) re-calculates the parities upon arrival:
+- **Zero Parity Changes:** No single-bit error occurred.
+- **One Parity Change:** A parity bit ($x_5, x_6,$ or $x_7$) was flipped.
+- **Multiple Parity Changes:** A message bit ($x_1, x_2, x_3,$ or $x_4$) was flipped.
+
+Because each message bit belongs to a unique combination of parity sets, Bob can "triangulate" exactly which bit is wrong and flip it back.
+
+---
+
+## Summary Table: Efficiency Comparison
+
+| Code Type | $n$ | $k$ | Redundancy Bits | Error Correction |
+| :--- | :---: | :---: | :---: | :--- |
+| **Repetition** | 3 | 1 | 2 | Corrects 1 bit |
+| **Hamming** | 7 | 4 | 3 | Corrects 1 bit |
+
+*Note: To protect 4 bits with a repetition code, you would need 12 bits total. Hamming does the same job with only 7.*
