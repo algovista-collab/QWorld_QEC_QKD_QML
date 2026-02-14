@@ -289,3 +289,26 @@ The distance between **1011** and **0111** is **two**. 1011 + 0111 = 1100 (There
 ## Significance in Error Correction
 * **Small Distance:** If the distance between valid codewords is small, noise can easily transform one valid codeword into another (or something very close to it), making the error impossible to correct.
 * **Large Distance:** A larger distance allows the code to tolerate more bit flips while still being able to "map" the corrupted version back to the original intended codeword. Because the corrupted codeword will still be closer to the correct valid codeword and for smaller distance between codewords, it can equal distance from 2 valid codewords making it impossible to recover the correct codeword.
+
+## 2. Relationship Between Distance and Errors
+The distance of a code ($d$) directly determines its mathematical limits for handling different types of transmission failures.
+
+### The Theorem
+A code with distance **$d$** can:
+* **Correct** at most $d - 1$ erasure errors.
+* **Detect** at most $d - 1$ bit flip errors.
+* **Correct** at most $\lfloor \frac{d-1}{2} \rfloor$ bit flip errors.
+
+> **Significance:** A single quantity, $d$, summarizes the code's effectiveness at identifying and fixing various noise types.
+
+---
+
+## 3. Code Notation $[n, k, d]$
+If the distance $d$ of a code $\mathcal{C}$ is known, the code is formally denoted by its parameters as $[n, k, d]$:
+* **$n$**: Length of the codeword.
+* **$k$**: Dimension of the message.
+* **$d$**: Minimum distance of the code.
+
+### Examples:
+* **Hamming Code:** Denoted as $[7, 4, 3]$, meaning it has a distance of $d = 3$. According to the theorem, it can correct $\lfloor \frac{3-1}{2} \rfloor = 1$ bit flip error.
+* **Repetition Code:** Denoted as $[n, 1, d]$.
