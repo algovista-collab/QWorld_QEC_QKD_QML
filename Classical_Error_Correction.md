@@ -256,3 +256,36 @@ For a linear code in **standard form**, the matrices $G$ and $H$ are related as 
 The core requirement for these matrices is:
 $$G \cdot H^T = 0 \pmod 2$$
 This ensures that every valid codeword $c$ satisfies the parity equations: $H \cdot c^T = 0$.
+
+# Distance of a Code
+
+A crucial quantity of interest when discussing codes is their **distance**, as it determines the number of errors that can be corrected. When an error occurs on a codeword $\mathbf{c}$, it creates a corrupted codeword $\mathbf{\tilde{c}}$ that is a certain "distance" away from the original.
+
+---
+
+## Hamming Distance
+
+The **Hamming distance** is the metric used to build the notion of code distance.
+
+> **Definition:** The Hamming distance between two bit strings $\mathbf{s}, \mathbf{t}$ is the number of places where they have different symbols. This is denoted as $d_H(\mathbf{s}, \mathbf{t})$.
+
+### Mathematical Calculation
+The Hamming distance determines the number of substitutions or errors required to transform a length-$n$ vector $\mathbf{s}$ into another length-$n$ vector $\mathbf{t}$. It is calculated as:
+
+$$d_H(\mathbf{s}, \mathbf{t}) = \sum_{i} \mathbf{s}_i + \mathbf{t}_i$$
+
+*Note: The addition inside the sum is in the binary field (XOR), but the final summation is regular integer addition.*
+
+### Example
+The distance between **1011** and **0111** is **two**.
+* Position 1: $1 \neq 0$ (Different)
+* Position 2: $0 \neq 1$ (Different)
+* Position 3: $1 = 1$ (Same)
+* Position 4: $1 = 1$ (Same)
+* **Total Distance:** 2 (You must flip the first two entries to go from the first string to the second).
+
+---
+
+## Significance in Error Correction
+* **Correction Threshold:** If the distance is small, it is possible to correct the error.
+* **Correction Limit:** If the distance of the error is larger than a specific threshold value (the "distance of the code"), the error cannot be corrected.
