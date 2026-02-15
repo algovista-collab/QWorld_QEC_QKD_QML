@@ -157,3 +157,19 @@ When Bob measures the ancilla qubits, the superposition **collapses** into one o
 In both cases, the subsequent error-correction procedure (doing nothing for `00` or applying $X^{(i)}$ for `s`) will fix the state perfectly.
 
 > **Conclusion**: Because of the linearity of quantum mechanics and the collapse mechanism of measurement, we can correct any error that is a linear combination of errors the code is designed to handle.
+
+# 3. Quantum Repetition Code for Phase-Flips
+While the previous code corrected $X$ errors, the **Phase-Flip Code** is designed specifically for $Z$ errors.
+
+### Setup
+If a channel applies the $Z$ operator with probability $p$, the state is distorted as:
+$$|\tilde{\psi}\rangle = Z|\psi\rangle = Z(\alpha|0\rangle + \beta|1\rangle) = \alpha|0\rangle - \beta|1\rangle \text{}$$
+
+### Encoding
+To protect against phase-flips, we use a repetition code in the **Hadamard basis** ($|+\rangle, |-\rangle$):
+
+* $|0\rangle \rightarrow |\bar{0}\rangle = |+++\rangle$
+* $|1\rangle \rightarrow |\bar{1}\rangle = |---\rangle$
+
+**Encoded Logical Qubit:**
+$$|\psi\rangle |00\rangle \rightarrow |\bar{\psi}\rangle = \alpha|+++\rangle + \beta|---\rangle \text{}$$
