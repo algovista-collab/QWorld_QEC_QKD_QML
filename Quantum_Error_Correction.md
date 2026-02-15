@@ -173,3 +173,62 @@ To protect against phase-flips, we use a repetition code in the **Hadamard basis
 
 **Encoded Logical Qubit:**
 $$|\psi\rangle |00\rangle \rightarrow |\bar{\psi}\rangle = \alpha|+++\rangle + \beta|---\rangle \text{}$$
+
+<img width="352" height="166" alt="image" src="https://github.com/user-attachments/assets/19cb1d33-e0bf-4e85-a4a1-a2366ca945bc" />
+
+# Quantum Error Correction: Decoding Phase Flip Errors
+
+## 1. Overview
+In a **Phase Flip Code**, information is encoded in the $X$-basis (the plus/minus basis). A phase flip error ($Z$ gate) acts on this basis the same way a bit flip ($X$ gate) acts on the computational basis:
+- $|+\rangle \xrightarrow{Z} |-\rangle$
+- $|-\rangle \xrightarrow{Z} |+\rangle$
+
+To detect these without destroying the quantum state, we use **Syndrome Measurement** in the Hadamard basis.
+
+---
+
+## 2. The Decoding Circuit Logic
+
+Bob uses a comparison circuit to check the parity of adjacent qubits. The process follows three distinct phases:
+
+### Phase A: Change of Basis
+Since standard control gates (CNOT) operate on the computational basis ($|0\rangle, |1\rangle$), we must first rotate the qubits:
+- Apply a **Hadamard (H) gate** to the data qubits.
+- This maps $|+\rangle \rightarrow |0\rangle$ and $|-\rangle \rightarrow |1\rangle$.
+
+### Phase B: Parity Check
+We use an **Ancilla Qubit** to compare two data qubits ($Q_i$ and $Q_j$):
+1. **CNOT ($Q_i \to \text{Ancilla}$):** Flips the ancilla if $Q_i$ is $|1\rangle$.
+2. **CNOT ($Q_j \to \text{Ancilla}$):** Flips it back if $Q_j$ is also $|1\rangle$.
+3. **Result:** The Ancilla is $|1\rangle$ **only if** the two qubits are different (e.g., one is $|+\rangle$ and the other is $|-\rangle$).
+
+### Phase C: Reverting Basis
+Apply a second **Hadamard gate**. Because $H^2 = I$, this returns the qubits to the plus/minus basis while leaving the error "trapped" in the measurement result of the ancilla.
+
+---
+
+## 3. Circuit Simplification
+The identity $H \cdot Z \cdot H = X$ and $H \cdot X \cdot H = Z$ allows us to simplify the circuit. If we see a sequence of $H$ gates separated by a $CNOT$, we are effectively performing a **Control-Z** operation or a measurement in the $X$-basis.
+
+
+
+---
+
+## 4. Syndrome Table & Correction
+After measuring the two ancilla qubits ($a_1, a_2$), Bob applies a **Z-gate** (Phase Flip) to the specific qubit that disagreed with the others.
+
+| Syndrome ($a_1, a_2$) | State Detected | Error Location | Correction |
+| :--- | :--- | :--- | :--- |
+| `00` | Same signs | No Error | None |
+| `10` | $Q_1 \neq Q_2$ | **Qubit 1** | Apply $Z$ to $Q_1$ |
+| `11` | $Q_1 \neq Q_2, Q_2 \neq Q_3$ | **Qubit 2** | Apply $Z$ to $Q_2$ |
+| `01` | $Q_2 \neq Q_3$ | **Qubit 3** | Apply $Z$ to $Q_3$ |
+
+---
+
+## 5. Mathematical Summary
+For a three-qubit state $|\psi\rangle = \alpha|+++\rangle + \beta|---\rangle$, the stabilizer operators are:
+$$S_1 = X_1 X_2 I$$
+$$S_2 = I X_2 X_3$$
+
+The decoding circuit measures these eigenvalues. If an error $Z_1$ occurs, it anti-commutes with $S_1$, changing the measurement outcome to $-1$ (binary `1`), signaling the error location.
