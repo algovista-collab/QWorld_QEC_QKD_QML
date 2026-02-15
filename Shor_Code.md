@@ -42,9 +42,9 @@ $$|\bar{\bar{1}}\rangle = \frac{(|000\rangle - |111\rangle)(|000\rangle - |111\r
 
 Suppose a single-qubit $X$ error occurs on the fourth qubit (index 3). The logical states $\ket{\bar{\bar{0}}}$ and $\ket{\bar{\bar{1}}}$ are transformed as follows:
 
-$$X_4 \ket{\bar{\bar{0}}} = \frac{(\ket{000} + \ket{111})(\ket{010} + \ket{101})(\ket{000} + \ket{111})}{2\sqrt{2}} \tag{9}$$
+$$X_4 \ket{\bar{\bar{0}}} = \frac{(\ket{000} + \ket{111})(\ket{010} + \ket{101})(\ket{000} + \ket{111})}{2\sqrt{2}}$$
 
-$$X_4 \ket{\bar{\bar{1}}} = \frac{(\ket{000} - \ket{111})(\ket{010} - \ket{101})(\ket{000} - \ket{111})}{2\sqrt{2}} \tag{10}$$
+$$X_4 \ket{\bar{\bar{1}}} = \frac{(\ket{000} - \ket{111})(\ket{010} - \ket{101})(\ket{000} - \ket{111})}{2\sqrt{2}}$$
 
 ---
 
