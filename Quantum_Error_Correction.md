@@ -191,6 +191,8 @@ To detect these without destroying the quantum state, we use **Syndrome Measurem
 
 Bob uses a comparison circuit to check the parity of adjacent qubits. The process follows three distinct phases:
 
+<img width="883" height="292" alt="image" src="https://github.com/user-attachments/assets/1cff5288-2d94-4a8d-a1bb-b5ebc03f2033" />
+
 ### Phase A: Change of Basis
 Since standard control gates (CNOT) operate on the computational basis ($|0\rangle, |1\rangle$), we must first rotate the qubits:
 - Apply a **Hadamard (H) gate** to the data qubits.
