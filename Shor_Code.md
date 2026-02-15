@@ -115,9 +115,9 @@ The Shor code can correct errors beyond $X$ and $Z$, such as the $Y$ error ($Y =
 ### Example: $Y_4$ Error
 Applying $Y_4$ (an error on the second block) results in corrupted basis states:
 
-$$Y_4 \ket{\bar{\bar{0}}} = i\frac{(\ket{000} + \ket{111})(\ket{010} - \ket{101})(\ket{000} + \ket{111})}{2\sqrt{2}} \tag{17}$$
+$$Y_4 \ket{\bar{\bar{0}}} = i\frac{(\ket{000} + \ket{111})(\ket{010} - \ket{101})(\ket{000} + \ket{111})}{2\sqrt{2}}$$
 
-$$Y_4 \ket{\bar{\bar{1}}} = i\frac{(\ket{000} - \ket{111})(\ket{010} + \ket{101})(\ket{000} - \ket{111})}{2\sqrt{2}} \tag{18}$$
+$$Y_4 \ket{\bar{\bar{1}}} = i\frac{(\ket{000} - \ket{111})(\ket{010} + \ket{101})(\ket{000} - \ket{111})}{2\sqrt{2}}$$
 
 ### Detection and Correction
 $Y$ errors are handled in two stages:
@@ -129,4 +129,4 @@ $Y$ errors are handled in two stages:
 ## Conclusion: Correctable Error Set
 The Shor code can correct any single-qubit error in the set:
 
-$$\mathcal{E} = I \cup \{X_i\}_i \cup \{Y_i\}_i \cup \{Z_i\}_i, \quad i = 0, \dots, 8 \tag{19}$$
+$$\mathcal{E} = I \cup \{X_i\}_i \cup \{Y_i\}_i \cup \{Z_i\}_i, \quad i = 0, \dots, 8$$
