@@ -40,12 +40,7 @@ $$|\psi\rangle_L = \alpha|000\rangle + \beta|111\rangle$$
 ## 3. The Encoding Circuit
 The transformation is achieved using **CNOT gates**. The original qubit acts as the control, and the two ancilla qubits act as targets.
 
-| Step | Operation | Resulting State |
-| :--- | :--- | :--- |
-| **Input** | Start with $|\psi\rangle$ and 2 ancillas | $(\alpha|0\rangle + \beta|1\rangle)|00\rangle$ |
-| **Step 1** | CNOT ($Q_1 \rightarrow Q_2$) | $\alpha|00\rangle|0\rangle + \beta|11\rangle|0\rangle$ |
-| **Step 2** | CNOT ($Q_1 \rightarrow Q_3$) | $\alpha|000\rangle + \beta|111\rangle$ |
-| **Final** | **Encoded State** | **$|\psi\rangle_L$** |
+<img width="287" height="163" alt="image" src="https://github.com/user-attachments/assets/db996c0f-0521-41af-a34b-1ef2b0ba4324" />
 
 ---
 
