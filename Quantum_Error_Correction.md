@@ -124,14 +124,7 @@ Bit-flip errors ($X$) do not destroy the state; they move the encoded state from
 ### Subspace Mapping Table
 The following table shows how specific errors transform the basis of the codespace:
 
-| Error Applied | Subspace Basis |
-| :--- | :--- |
-| **$I$** (No Error) | $\{|000\rangle, |111\rangle\}$ |
-| **$X_0$** (Error on Qubit 0) | $\{|100\rangle, |011\rangle\}$ |
-| **$X_1$** (Error on Qubit 1) | $\{|010\rangle, |101\rangle\}$ |
-| **$X_2$** (Error on Qubit 2) | $\{|001\rangle, |110\rangle\}$ |
-
-
+<img width="282" height="326" alt="image" src="https://github.com/user-attachments/assets/3257965c-0ff2-4628-9c4d-e2c88b48be3c" />
 
 ---
 
