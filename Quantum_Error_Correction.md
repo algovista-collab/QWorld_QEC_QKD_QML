@@ -75,9 +75,9 @@ The ancilla qubits used for this are called **syndrome qubits**. Based on their 
 | Syndrome ($s_1 s_2$) | Error Type | Action to Correct |
 | :--- | :--- | :--- |
 | `00` | No Error | Do nothing ($I$) |
-| `10` | Error on Qubit 1 ($X_1$) | Apply $X$ to Qubit 1 |
-| `11` | Error on Qubit 2 ($X_2$) | Apply $X$ to Qubit 2 |
-| `01` | Error on Qubit 3 ($X_3$) | Apply $X$ to Qubit 3 |
+| `10` | Error on Qubit 1 ($X_1$) | Apply $X_1$ to Qubit 1 |
+| `11` | Error on Qubit 2 ($X_2$) | Apply $X_2$ to Qubit 2 |
+| `01` | Error on Qubit 3 ($X_3$) | Apply $X_3$ to Qubit 3 |
 
 <img width="498" height="278" alt="image" src="https://github.com/user-attachments/assets/904829e6-edfa-43b3-b3cc-42c2016d5df1" />
 
@@ -87,7 +87,7 @@ The ancilla qubits used for this are called **syndrome qubits**. Based on their 
 Once the error is identified via the syndrome, Bob applies the inverse operation. In the case of bit-flips ($X$ gates), the operators are **self-inverse**:
 $$X \cdot X = I$$
 
-If Bob detects an error $X_1$, he simply applies $X$ to the first qubit to return the state to $|\psi\rangle_L$.
+If Bob detects an error $X_1$, he simply applies $X_1$ to the first qubit to return the state to $|\psi\rangle_L$.
 
 ---
 
