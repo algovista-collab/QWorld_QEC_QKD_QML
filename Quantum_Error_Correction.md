@@ -212,7 +212,7 @@ Apply a second **Hadamard gate**. Because $H^2 = I$, this returns the qubits to 
 ## 3. Circuit Simplification
 The identity $H \cdot Z \cdot H = X$ and $H \cdot X \cdot H = Z$ allows us to simplify the circuit. If we see a sequence of $H$ gates separated by a $CNOT$, we are effectively performing a **Control-Z** operation or a measurement in the $X$-basis.
 
-
+<img width="576" height="300" alt="image" src="https://github.com/user-attachments/assets/a153230a-da02-47ef-8600-7eac85ba9dde" />
 
 ---
 
@@ -227,6 +227,10 @@ After measuring the two ancilla qubits ($a_1, a_2$), Bob applies a **Z-gate** (P
 | `01` | $Q_2 \neq Q_3$ | **Qubit 3** | Apply $Z$ to $Q_3$ |
 
 ---
+
+The whole circuit together:
+
+<img width="793" height="287" alt="image" src="https://github.com/user-attachments/assets/c640bab9-b3c2-413d-9732-f08fc36c45ff" />
 
 ## 5. Mathematical Summary
 For a three-qubit state $|\psi\rangle = \alpha|+++\rangle + \beta|---\rangle$, the stabilizer operators are:
