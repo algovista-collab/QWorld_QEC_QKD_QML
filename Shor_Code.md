@@ -130,3 +130,32 @@ $Y$ errors are handled in two stages:
 The Shor code can correct any single-qubit error in the set:
 
 $$\mathcal{E} = I \cup \{X_i\}_i \cup \{Y_i\}_i \cup \{Z_i\}_i, \quad i = 0, \dots, 8$$
+
+# Multi-Qubit Error Correction in the Shor Code
+
+The Shor code is a concatenated quantum code that can handle specific multi-qubit error patterns by utilizing its hierarchical structure.
+
+## Correctable Two-Qubit Errors
+The code can correct certain two-qubit errors provided they do not exceed the correction capacity of a single "stage" of the code:
+
+* **Independent Bit-Flips ($X$):** The code can handle two $X$ errors if they occur in different triplets. Since each triplet (qubits 0-2, 3-5, and 6-8) is an independent bit-flip code, it can correct one $X$ error per block.
+* **Combined $X$ and $Z$ Errors:** The code can correct a simultaneous $X$ error and $Z$ error on different qubits (or the same qubit, which constitutes a $Y$ error). This is possible because the $X$-syndrome and $Z$-syndrome measurements are independent.
+* **Restriction on Phase-Flips ($Z$):** The code **cannot** correct two $Z$ errors if they occur in different blocks (e.g., qubit 1 and qubit 4). Because a $Z$ error on any qubit in a block flips the phase of that entire block, two such errors would appear as two phase-flipped logical blocks, which exceeds the outer code's capacity.
+
+---
+
+## Correctable Three-Qubit Errors
+The Shor code can handle specific three-qubit errors if they are distributed to avoid overwhelming the component codes:
+
+* **Distributed Bit-Flips:** The code can handle exactly **three $X$ errors** if, and only if, there is exactly one error in each of the three triplets (e.g., qubits 0, 3, and 6).
+* **Mixed Error Patterns:** It can handle combinations such as two $X$ errors in different triplets and one $Z$ error anywhere. The inner code corrects the bit-flips, while the outer code corrects the phase-flip.
+
+---
+
+## Summary of Correctable Error Conditions
+
+| Error Type | Capacity | Condition |
+| :--- | :--- | :--- |
+| **Bit-Flip ($X$)** | Up to 3 | Max one $X$ error per triplet block. |
+| **Phase-Flip ($Z$)** | Exactly 1 | Max one $Z$ error across all nine qubits. |
+| **General ($\mathcal{E}$)** | Variable | Any error in the set $I \cup \{X_i\}_i \cup \{Y_i\}_i \cup \{Z_i\}_i$. |
