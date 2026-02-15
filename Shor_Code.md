@@ -106,3 +106,27 @@ At the outer level, the detection strategy becomes intuitive:
 | Qubits 0, 1, or 2 | Sign flip in Block 1 | Block 1 differs from 2 & 3 |
 | Qubits 3, 4, or 5 | Sign flip in Block 2 | Block 2 differs from 1 & 3 |
 | Qubits 6, 7, or 8 | Sign flip in Block 3 | Block 3 differs from 1 & 2 |
+
+# Shor Code ($Y$ Errors)
+
+## $Y$-errors (Combined Bit-and-Phase-Flip)
+The Shor code can correct errors beyond $X$ and $Z$, such as the $Y$ error ($Y = iZX$), which acts as a combined bit-flip and phase-flip.
+
+### Example: $Y_4$ Error
+Applying $Y_4$ (an error on the second block) results in corrupted basis states:
+
+$$Y_4 \ket{\bar{\bar{0}}} = i\frac{(\ket{000} + \ket{111})(\ket{010} - \ket{101})(\ket{000} + \ket{111})}{2\sqrt{2}} \tag{17}$$
+
+$$Y_4 \ket{\bar{\bar{1}}} = i\frac{(\ket{000} - \ket{111})(\ket{010} + \ket{101})(\ket{000} - \ket{111})}{2\sqrt{2}} \tag{18}$$
+
+### Detection and Correction
+$Y$ errors are handled in two stages:
+1. **$X$ detection stage:** Identifies that the fourth qubit is flipped and fixes it.
+2. **$Z$ detection stage:** Identifies that the middle block has experienced a phase error and fixes it.
+
+---
+
+## Conclusion: Correctable Error Set
+The Shor code can correct any single-qubit error in the set:
+
+$$\mathcal{E} = I \cup \{X_i\}_i \cup \{Y_i\}_i \cup \{Z_i\}_i, \quad i = 0, \dots, 8 \tag{19}$$
