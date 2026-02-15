@@ -104,3 +104,40 @@ Since the encoding circuit (CNOTs) is also **self-inverse**, Bob passes the thre
 
 > ### Key Takeaway
 > The quantum repetition code works because we measure the **relationship** between qubits (parity) rather than the **state** of the qubits themselves. This allows us to fix bit-flips while preserving quantum coherence.
+
+# Linear Algebraic Analysis of the Quantum Repetition Code
+
+To understand why the code works, we can analyze the **vector spaces** and how errors shift the state between them.
+
+---
+
+## 1. Hilbert Spaces and Subspaces
+* **Original State:** The unencoded logical qubit lives in a **2-dimensional Hilbert space**.
+* **Data Qubits:** The three physical qubits occupy a larger **$2^3$-dimensional Hilbert space**.
+* **Codespace:** The process of encoding maps the original 2D space into a specific **2-dimensional subspace** of the physical qubits.
+
+---
+
+## 2. Error-Induced Subspace Shifts
+Bit-flip errors ($X$) do not destroy the state; they move the encoded state from the original **quantum code subspace** into a different 2-dimensional subspace.
+
+### Subspace Mapping Table
+The following table shows how specific errors transform the basis of the codespace:
+
+| Error Applied | Subspace Basis |
+| :--- | :--- |
+| **$I$** (No Error) | $\{|000\rangle, |111\rangle\}$ |
+| **$X_0$** (Error on Qubit 0) | $\{|100\rangle, |011\rangle\}$ |
+| **$X_1$** (Error on Qubit 1) | $\{|010\rangle, |101\rangle\}$ |
+| **$X_2$** (Error on Qubit 2) | $\{|001\rangle, |110\rangle\}$ |
+
+
+
+---
+
+## 3. Why This Enables Correction
+1. **Detection:** Error detection is simply the process of determining **which subspace** the current state is in.
+2. **Non-Destructive:** Because each error moves the state to a unique, orthogonal subspace, identifying the subspace does not distort or collapse the actual state information ($\alpha$ and $\beta$).
+3. **Correction:** Once the subspace is identified, error correction moves the state back to the original **quantum code subspace**.
+
+> This notion of "subspaces" is the formal foundation used to define more complex quantum error-correction codes.
