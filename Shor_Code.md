@@ -77,22 +77,22 @@ Detecting a single-qubit $Z$ error is slightly more complex. If a $Z$ error occu
 ### State Transformation (Inner Code Level)
 For $i = 0, 1, 2$, the logical states transform as follows:
 
-$$Z_i \ket{\bar{\bar{0}}} = \frac{(\ket{000} - \ket{111})(\ket{000} + \ket{111})(\ket{000} + \ket{111})}{2\sqrt{2}} \tag{11}$$
+$$Z_i \ket{\bar{\bar{0}}} = \frac{(\ket{000} - \ket{111})(\ket{000} + \ket{111})(\ket{000} + \ket{111})}{2\sqrt{2}}$$
 
-$$Z_i \ket{\bar{\bar{1}}} = \frac{(\ket{000} + \ket{111})(\ket{000} - \ket{111})(\ket{000} - \ket{111})}{2\sqrt{2}} \tag{12}$$
+$$Z_i \ket{\bar{\bar{1}}} = \frac{(\ket{000} + \ket{111})(\ket{000} - \ket{111})(\ket{000} - \ket{111})}{2\sqrt{2}}$$
 
 ---
 
 ### Outer Code Level Perspective
 A clearer way to visualize this is at the **outer code level**, where the logical encoding is represented using the sign basis states $\ket{+}$ and $\ket{-}$:
 
-$$\ket{\bar{\bar{0}}} = \ket{\bar{+}} \ket{\bar{+}} \ket{\bar{+}} \tag{13}$$
-$$\ket{\bar{\bar{1}}} = \ket{\bar{-}} \ket{\bar{-}} \ket{\bar{-}} \tag{14}$$
+$$\ket{\bar{\bar{0}}} = \ket{\bar{+}} \ket{\bar{+}} \ket{\bar{+}}$$
+$$\ket{\bar{\bar{1}}} = \ket{\bar{-}} \ket{\bar{-}} \ket{\bar{-}}$$
 
 When a $Z_i$ error occurs for $i = 0, 1, 2$, the effect on these outer states is:
 
-$$Z_i \ket{\bar{\bar{0}}} = \ket{\bar{-}} \ket{\bar{+}} \ket{\bar{+}} \tag{15}$$
-$$Z_i \ket{\bar{\bar{1}}} = \ket{\bar{+}} \ket{\bar{-}} \ket{\bar{-}} \tag{16}$$
+$$Z_i \ket{\bar{\bar{0}}} = \ket{\bar{-}} \ket{\bar{+}} \ket{\bar{+}}$$
+$$Z_i \ket{\bar{\bar{1}}} = \ket{\bar{+}} \ket{\bar{-}} \ket{\bar{-}}$$
 
 ---
 
