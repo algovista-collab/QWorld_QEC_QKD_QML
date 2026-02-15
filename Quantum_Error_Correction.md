@@ -53,3 +53,54 @@ We assume the channel applies the $X$ operator to each qubit independently with 
 3. **Multiple bit-flips:** e.g., $|110\rangle$ (Prob: $\approx 3p^2$)
 
 By using three qubits, Bob can perform **syndrome measurements** to detect which qubit flipped and correct it, provided that no more than one qubit was affected.
+
+# Decoding the Quantum Repetition Code
+
+The decoding process consists of three distinct phases: **Error Detection**, **Error Correction**, and **State Recovery**.
+
+---
+
+## 1. Detecting the Error (Syndrome Measurement)
+In quantum mechanics, Bob cannot simply measure the qubits to see their values, as this would collapse the superposition ($\alpha|0\rangle + \beta|1\rangle$) and destroy the information Alice sent.
+
+### The Strategy: Partial Measurement
+Instead of measuring the state itself, Bob performs a **syndrome measurement**. This determines if the qubits are different from one another without revealing what their actual values are.
+
+* **Comparison 1:** Compare the 1st and 2nd qubits.
+* **Comparison 2:** Compare the 2nd and 3rd qubits.
+
+### Syndrome Table
+The ancilla qubits used for this are called **syndrome qubits**. Based on their measurement, Bob can identify the error:
+
+| Syndrome ($s_1 s_2$) | Error Type | Action to Correct |
+| :--- | :--- | :--- |
+| `00` | No Error | Do nothing ($I$) |
+| `10` | Error on Qubit 1 ($X_1$) | Apply $X$ to Qubit 1 |
+| `11` | Error on Qubit 2 ($X_2$) | Apply $X$ to Qubit 2 |
+| `01` | Error on Qubit 3 ($X_3$) | Apply $X$ to Qubit 3 |
+
+<img width="498" height="278" alt="image" src="https://github.com/user-attachments/assets/904829e6-edfa-43b3-b3cc-42c2016d5df1" />
+
+---
+
+## 2. Correcting the Error
+Once the error is identified via the syndrome, Bob applies the inverse operation. In the case of bit-flips ($X$ gates), the operators are **self-inverse**:
+$$X \cdot X = I$$
+
+If Bob detects an error $X_1$, he simply applies $X$ to the first qubit to return the state to $|\psi\rangle_L$.
+
+---
+
+## 3. Decoding (State Recovery)
+After the error is corrected, Bob has the state $|\psi\rangle_L = \alpha|000\rangle + \beta|111\rangle$. To recover the original single-qubit state $|\psi\rangle$, he must undo the encoding.
+
+Since the encoding circuit (CNOTs) is also **self-inverse**, Bob passes the three qubits through the same circuit used for encoding:
+1.  Apply CNOT from $Q_1$ to $Q_2$.
+2.  Apply CNOT from $Q_1$ to $Q_3$.
+
+**Result:** The first qubit returns to the state $\alpha|0\rangle + \beta|1\rangle$, and the other two qubits return to $|00\rangle$.
+
+---
+
+> ### Key Takeaway
+> The quantum repetition code works because we measure the **relationship** between qubits (parity) rather than the **state** of the qubits themselves. This allows us to fix bit-flips while preserving quantum coherence.
