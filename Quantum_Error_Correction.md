@@ -134,3 +134,26 @@ The following table shows how specific errors transform the basis of the codespa
 3. **Correction:** Once the subspace is identified, error correction moves the state back to the original **quantum code subspace**.
 
 > This notion of "subspaces" is the formal foundation used to define more complex quantum error-correction codes.
+
+## 2. Correcting Continuous $X$ Rotation Errors
+The bit-flip code is more versatile than it looks—it can correct continuous rotation errors, not just discrete bit-flips.
+
+### The Rotation Operator
+Consider a rotation about the $X$ axis on the $i$-th qubit:
+$$R_x^{(i)}(\theta) = \cos \theta I - i \sin \theta X^{(i)}$$
+
+When the encoded state $|\bar{\psi}\rangle$ passes through a channel with this rotation, the corrupted state becomes:
+$$|\tilde{\psi}\rangle = \cos \theta |\bar{\psi}\rangle - i \sin \theta X^{(i)} |\bar{\psi}\rangle$$
+
+### Measurement and Collapse
+When this state runs through the error-detection circuit with two ancillas, the state before measurement is:
+$$\cos \theta |\bar{\psi}\rangle |00\rangle - i \sin \theta X^{(i)} |\bar{\psi}\rangle |s\rangle$$
+
+When Bob measures the ancilla qubits, the superposition **collapses** into one of two outcomes:
+
+1. **Result `00`**: (Prob: $|\cos \theta|^2$) The state collapses back to the original $|\bar{\psi}\rangle$.
+2. **Result `s`**: (Prob: $|\sin \theta|^2$) The state collapses to $X^{(i)} |\bar{\psi}\rangle$.
+
+In both cases, the subsequent error-correction procedure (doing nothing for `00` or applying $X^{(i)}$ for `s`) will fix the state perfectly.
+
+> **Conclusion**: Because of the linearity of quantum mechanics and the collapse mechanism of measurement, we can correct any error that is a linear combination of errors the code is designed to handle.
