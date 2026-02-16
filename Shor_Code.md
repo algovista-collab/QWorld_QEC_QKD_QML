@@ -159,3 +159,46 @@ The Shor code can handle specific three-qubit errors if they are distributed to 
 | **Bit-Flip ($X$)** | Up to 3 | Max one $X$ error per triplet block. |
 | **Phase-Flip ($Z$)** | Exactly 1 | Max one $Z$ error across all nine qubits. |
 | **General ($\mathcal{E}$)** | Variable | Any error in the set $I \cup \{X_i\}_i \cup \{Y_i\}_i \cup \{Z_i\}_i$. |
+
+# Syndrome Measurements: An Alternate View
+
+This notebook explores a technique for measuring qubits used in **repetition and Shor codes**. The objective is to perform a **partial measurement** to determine if an error has occurred without a destructive measurement of the entire state.
+
+---
+
+## 1. The Indirect Measurement Concept
+To measure an operator $M$ (with eigenvalues $\pm1$) on an unknown state $|\psi\rangle$, an **ancilla qubit** is used to store the measurement result.
+
+### The Circuit Logic
+The process follows these steps as shown in the circuit diagram:
+1. **Initialize** an ancilla qubit in the state $|0\rangle$.
+2. **Superposition**: Apply a Hadamard ($H$) gate to the ancilla.
+3. **Entanglement**: Apply a **Controlled-M** operation (ancilla as control, $|\psi\rangle$ as target).
+4. **Interference**: Apply a second $H$ gate to the ancilla.
+5. **Readout**: Measure the ancilla qubit.
+
+
+
+---
+
+## 2. Mathematical Evolution (Example: $M = Z$)
+Using the state $|\psi\rangle = \alpha|0\rangle + \beta|1\rangle$ and measuring the $Z$ operator, the system evolves through the following stages:
+
+1. **Initial State**: $|\psi\rangle|0\rangle$
+2. **After first $H$**: $|\psi\rangle|0\rangle + |\psi\rangle|1\rangle$
+3. **After $CZ_{10}$**: $|\psi\rangle|0\rangle + (Z|\psi\rangle)|1\rangle$
+4. **After second $H$**: $(|\psi\rangle + Z|\psi\rangle)|0\rangle + (|\psi\rangle - Z|\psi\rangle)|1\rangle$
+5. **Resulting State**: $\alpha|00\rangle + \beta|11\rangle$
+
+---
+
+## 3. Measurement Outcomes
+When the ancilla is measured, the results correlate to the state of the target qubit (Qubit 0):
+
+| Measurement Outcome | Probability | Post-measure State of Qubit 0 |
+| :--- | :--- | :--- |
+| **0** (Eigenvalue +1) | $|\alpha|^2$ | $|0\rangle$ |
+| **1** (Eigenvalue -1) | $|\beta|^2$ | $|1\rangle$ |
+
+### Key Inference
+By measuring only the ancilla, we can infer the **syndrome** (whether an error occurred) while the circuit ensures the target qubit is collapsed onto the appropriate eigenstate of $M$.
