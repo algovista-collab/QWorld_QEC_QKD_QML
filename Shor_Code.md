@@ -195,10 +195,7 @@ Using the state $|\psi\rangle = \alpha|0\rangle + \beta|1\rangle$ and measuring 
 ## 3. Measurement Outcomes
 When the ancilla is measured, the results correlate to the state of the target qubit (Qubit 0):
 
-| Measurement Outcome | Probability | Post-measure State of Qubit 0 |
-| :--- | :--- | :--- |
-| **0** (Eigenvalue +1) | $|\alpha|^2$ | $|0\rangle$ |
-| **1** (Eigenvalue -1) | $|\beta|^2$ | $|1\rangle$ |
+<img width="977" height="511" alt="image" src="https://github.com/user-attachments/assets/62788ad2-08fb-4aaa-b5df-c266c29874b7" />
 
 ### Key Inference
 By measuring only the ancilla, we can infer the **syndrome** (whether an error occurred) while the circuit ensures the target qubit is collapsed onto the appropriate eigenstate of $M$.
