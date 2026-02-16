@@ -199,3 +199,13 @@ When the ancilla is measured, the results correlate to the state of the target q
 
 ### Key Inference
 By measuring only the ancilla, we can infer the **syndrome** (whether an error occurred) while the circuit ensures the target qubit is collapsed onto the appropriate eigenstate of $M$.
+
+<img width="1168" height="558" alt="image" src="https://github.com/user-attachments/assets/e809984a-a9bb-40e8-8164-05311355abf7" />
+
+<img width="572" height="715" alt="image" src="https://github.com/user-attachments/assets/b93d980e-86c0-41a8-959e-05fc14aafe95" />
+
+<img width="867" height="685" alt="image" src="https://github.com/user-attachments/assets/eccaa0a2-100c-4dd5-8162-085cc0668878" />
+
+<img width="661" height="341" alt="image" src="https://github.com/user-attachments/assets/cb6bc7d6-a712-4c52-816f-bd9a68ef4df1" />
+
+
