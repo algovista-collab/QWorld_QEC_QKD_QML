@@ -212,9 +212,13 @@ The 9 qubits are indexed 0–8 and grouped into three blocks:
 * It applies a phase flip to qubit 0, which is part of the **first block**.
 * In the Shor code, a $Z$ error on *any* single qubit in a block (e.g., $Z_0, Z_1, \text{ or } Z_2$) has the same effect: it flips the sign of that specific block's GHZ state.
 
+$$Z_0 |\psi\rangle_L = \frac{1}{\sqrt{2}} (|000\rangle - |111\rangle) \otimes \frac{1}{\sqrt{2}} (|000\rangle + |111\rangle) \otimes \frac{1}{\sqrt{2}} (|000\rangle + |111\rangle)$$
+
 ### What does $Z_3$ do?
 * It applies a phase flip to qubit 3, which is part of the **second block**.
 * This affects the relative phase of the second GHZ triplet only.
+
+$$Z_3 |\psi\rangle_L = \frac{1}{\sqrt{2}} (|000\rangle + |111\rangle) \otimes \frac{1}{\sqrt{2}} (|000\rangle - |111\rangle) \otimes \frac{1}{\sqrt{2}} (|000\rangle + |111\rangle)$$
 
 ---
 
