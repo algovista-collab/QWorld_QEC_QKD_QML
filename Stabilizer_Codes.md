@@ -36,7 +36,7 @@ The following table demonstrates the results of multiplying the Pauli operators 
 2.  **Anti-commutation:** $\{A, B\} = AB + BA = 0$ for any two distinct Pauli matrices $\{X, Y, Z\}$.
 3.  **Cyclic Order:** Follow the order $X \rightarrow Y \rightarrow Z \rightarrow X$. Moving forward gives $+i$, moving backward (anti-cyclic) gives $-i$.
 
-# The Pauli Group $\mathcal{P}_1$
+## 1. The Pauli Group $\mathcal{P}_1$
 
 The single-qubit Pauli group, denoted as $\mathcal{P}_1$, consists of 16 matrices formed by the four Pauli matrices $\{I, X, Y, Z\}$ and four possible phase factors $\{\pm 1, \pm i\}$.
 
@@ -73,20 +73,6 @@ To find the inverse $P^{-1}$ of an element $P$, we look for the matrix that sati
 ### Key Takeaway
 * **Hermitian elements** ($\pm I, \pm X, \pm Y, \pm Z$) are their own inverses.
 * **Anti-Hermitian elements** (those with a factor of $\pm i$) require a sign flip for their inverse (e.g., the inverse of $iX$ is $-iX$).
-
-# The Pauli Group $\mathcal{P}_1$ and $\mathcal{P}_2$
-
-## 1. The Single-Qubit Pauli Group ($\mathcal{P}_1$)
-
-The group $\mathcal{P}_1$ consists of 16 matrices formed by the four Pauli matrices combined with four possible phase factors $\{\pm 1, \pm i\}$.
-
-$$\mathcal{P}_1 = \{\pm I, \pm iI, \pm X, \pm iX, \pm Y, \pm iY, \pm Z, \pm iZ\}$$
-
-### Group Axioms for $\mathcal{P}_1$
-* **Closure:** Multiplying any two elements of $\mathcal{P}_1$ results in another element of $\mathcal{P}_1$.
-* **Associativity:** For elements $P, Q, R$, $(PQ)R = P(QR)$ holds because they are matrices.
-* **Identity:** The element $I$ is the identity in $\mathcal{P}_1$.
-* **Inverses:** Every element has an inverse within the set (e.g., $X^{-1} = X$, $(iX)^{-1} = -iX$).
 
 ---
 
