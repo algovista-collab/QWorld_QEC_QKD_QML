@@ -78,7 +78,7 @@ To find the inverse $P^{-1}$ of an element $P$, we look for the matrix that sati
 
 ## 2. The Two-Qubit Pauli Group ($\mathcal{P}_2$)
 
-When considering two qubits, we use the **tensor product** ($\otimes$) of two Pauli matrices.
+When considering two qubits, we use the **tensor product** ($\otimes$) of two Pauli matrices. In general for n Pauli matrices, $P = P^{(0)} \otimes P^{(1)} \otimes P^{(2)} ... P^{(n)}$
 
 ### Multiplication Rule
 Given $P = P^{(0)} \otimes P^{(1)}$ and $Q = Q^{(0)} \otimes Q^{(1)}$, the product is calculated entry-wise:
@@ -92,7 +92,7 @@ The total number of elements in $\mathcal{P}_2$ is **64**.
 * There are 4 choices for the first matrix $P^{(0)}$.
 * There are 4 choices for the second matrix $P^{(1)}$.
 * There are 4 possible phase factors ($\pm 1, \pm i$).
-* **Total:** $4^2 \times 4 = 4^{2+1} = 64$ elements.
+* **Total:** $4^2 \times 4 = 4^{2+1} = 64$ elements. In generak, $4^{n+1}$ elements in ($\mathcal{P}_n$)
 
 ### Group Axioms for $\mathcal{P}_2$
 * **Closure:** Multiplying any of the 64 elements results in another element of the set.
