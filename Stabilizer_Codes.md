@@ -73,3 +73,56 @@ To find the inverse $P^{-1}$ of an element $P$, we look for the matrix that sati
 ### Key Takeaway
 * **Hermitian elements** ($\pm I, \pm X, \pm Y, \pm Z$) are their own inverses.
 * **Anti-Hermitian elements** (those with a factor of $\pm i$) require a sign flip for their inverse (e.g., the inverse of $iX$ is $-iX$).
+
+# The Pauli Group $\mathcal{P}_1$ and $\mathcal{P}_2$
+
+## 1. The Single-Qubit Pauli Group ($\mathcal{P}_1$)
+
+The group $\mathcal{P}_1$ consists of 16 matrices formed by the four Pauli matrices combined with four possible phase factors $\{\pm 1, \pm i\}$.
+
+$$\mathcal{P}_1 = \{\pm I, \pm iI, \pm X, \pm iX, \pm Y, \pm iY, \pm Z, \pm iZ\}$$
+
+### Group Axioms for $\mathcal{P}_1$
+* **Closure:** Multiplying any two elements of $\mathcal{P}_1$ results in another element of $\mathcal{P}_1$.
+* **Associativity:** For elements $P, Q, R$, $(PQ)R = P(QR)$ holds because they are matrices.
+* **Identity:** The element $I$ is the identity in $\mathcal{P}_1$.
+* **Inverses:** Every element has an inverse within the set (e.g., $X^{-1} = X$, $(iX)^{-1} = -iX$).
+
+---
+
+## 2. The Two-Qubit Pauli Group ($\mathcal{P}_2$)
+
+When considering two qubits, we use the **tensor product** ($\otimes$) of two Pauli matrices.
+
+### Multiplication Rule
+Given $P = P^{(0)} \otimes P^{(1)}$ and $Q = Q^{(0)} \otimes Q^{(1)}$, the product is calculated entry-wise:
+$$PQ = (P^{(0)} \otimes P^{(1)})(Q^{(0)} \otimes Q^{(1)}) = P^{(0)}Q^{(0)} \otimes P^{(1)}Q^{(1)}$$
+
+**Example Calculation:**
+$$(X \otimes Z)(Y \otimes Z) = (XY \otimes ZZ) = (iZ) \otimes I = i(Z \otimes I)$$
+
+### Size of the Group
+The total number of elements in $\mathcal{P}_2$ is **64**.
+* There are 4 choices for the first matrix $P^{(0)}$.
+* There are 4 choices for the second matrix $P^{(1)}$.
+* There are 4 possible phase factors ($\pm 1, \pm i$).
+* **Total:** $4^2 \times 4 = 4^{2+1} = 64$ elements.
+
+### Group Axioms for $\mathcal{P}_2$
+* **Closure:** Multiplying any of the 64 elements results in another element of the set.
+* **Associativity:** Multiplication remains associative.
+* **Identity:** The identity element is $I \otimes I$.
+* **Inverses:** The inverse of $P^{(0)} \otimes P^{(1)}$ is $P^{(0)^{-1}} \otimes P^{(1)^{-1}}$.
+
+---
+
+## Task: Determine the inverse of $i(X \otimes Y)$
+
+To find the inverse of $i(X \otimes Y)$, we need an element that results in the identity $I \otimes I$.
+
+1.  **Phase:** The inverse of $i$ is $-i$.
+2.  **Matrices:** Both $X$ and $Y$ are their own inverses ($X^2=I, Y^2=I$).
+3.  **Result:** The inverse is **$-i(X \otimes Y)$**.
+
+**Verification:**
+$$[i(X \otimes Y)] \cdot [-i(X \otimes Y)] = -(i^2)(X^2 \otimes Y^2) = -(-1)(I \otimes I) = I \otimes I$$
