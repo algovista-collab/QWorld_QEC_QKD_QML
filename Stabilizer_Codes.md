@@ -117,7 +117,7 @@ $$[i(X \otimes Y)] \cdot [-i(X \otimes Y)] = -(i^2)(X^2 \otimes Y^2) = -(-1)(I \
 A **subgroup** is a subset of a group that itself satisfies all four group axioms.
 
 ### Finite Subgroup Theorem
-For finite groups like $\mathcal{P}_n$, a non-empty subset $\mathcal{H}$ is a subgroup if and only if it is **closed under multiplication**.
+For finite groups like $\mathcal{P}_n$, a non-empty subset $\mathcal{H}$ is a subgroup if and only if it is **closed under multiplication** and if it holds so will the other three axioms.
 * If $A, B \in \mathcal{H}$ implies $AB \in \mathcal{H}$, then $\mathcal{H}$ is a subgroup.
 
 ### Worked Examples
