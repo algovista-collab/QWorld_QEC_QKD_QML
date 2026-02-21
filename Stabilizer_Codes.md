@@ -134,4 +134,3 @@ A common subgroup structure in 3-qubit systems involves fixing one position:
 $$\mathcal{H} = \{Q \in \mathcal{P}_3 \text{ s.t. } Q = P^{(0)} \otimes I \otimes P^{(2)}\}$$
 * **Identity:** $I \otimes I \otimes I$ is included.
 * **Inverses:** If $Q$ is in the set, $Q^{-1}$ is also of the form $P^{(0)^{-1}} \otimes I \otimes P^{(2)^{-1}}$.
-* **Size of G:** In the set $G$ defined in Eq. (5), there are **4** elements.
