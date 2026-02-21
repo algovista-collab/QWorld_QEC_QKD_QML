@@ -12,7 +12,7 @@ Multiplying any two Pauli matrices together results in another matrix from the s
 **Standard relations:**
 * $XY = iZ$
 * $YZ = iX$
-* $ZX = iY$ (Note: The image contains a typo stating $ZX=iX$; standard cyclic permutation dictates $ZX=iY$)
+* $ZX = iY$
 
 ---
 
