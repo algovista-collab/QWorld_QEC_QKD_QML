@@ -113,37 +113,6 @@ To find the inverse of $i(X \otimes Y)$, we need an element that results in the 
 **Verification:**
 $$[i(X \otimes Y)] \cdot [-i(X \otimes Y)] = -(i^2)(X^2 \otimes Y^2) = -(-1)(I \otimes I) = I \otimes I$$
 
-# Pauli Group Theory: $\mathcal{P}_n$ and Subgroups
-
-## 1. The Single-Qubit Pauli Group ($\mathcal{P}_1$)
-The set $\mathcal{P}_1$ contains 16 matrices formed by the four Pauli matrices combined with phase factors $\{\pm 1, \pm i\}$:
-$$\mathcal{P}_1 = \{ \pm I, \pm iI, \pm X, \pm iX, \pm Y, \pm iY, \pm Z, \pm iZ \}$$
-
-### Group Axioms for $\mathcal{P}_1$
-* **Closure:** Multiplying any two elements results in another element in $\mathcal{P}_1$.
-* **Associativity:** $(PQ)R = P(QR)$ holds for all matrices in the set.
-* **Identity:** $I$ is the identity element.
-* **Inverses:** Every element has an inverse in the set (e.g., $X^{-1} = X$; $(iX)^{-1} = -iX$).
-
----
-
-## 2. Multi-Qubit Pauli Groups ($\mathcal{P}_n$)
-For $n$ qubits, elements are formed using the **tensor product** ($\otimes$).
-
-### Multiplication Rule
-Multiplication is performed component-wise:
-$$(P^{(0)} \otimes P^{(1)})(Q^{(0)} \otimes Q^{(1)}) = P^{(0)}Q^{(0)} \otimes P^{(1)}Q^{(1)}$$
-
-### Group Size
-The number of elements in $\mathcal{P}_n$ is given by $4^{n+1}$.
-* **$\mathcal{P}_1$:** $4^{1+1} = 16$ elements.
-* **$\mathcal{P}_2$:** $4^{2+1} = 64$ elements.
-
-> **Example Inverse Question:** Determine the inverse of $i(X \otimes Y)$.
-> **Answer:** The inverse is $-i(X \otimes Y)$ because $[i(X \otimes Y)][-i(X \otimes Y)] = -(i^2)(X^2 \otimes Y^2) = I \otimes I$.
-
----
-
 ## 3. Subgroups of the Pauli Group
 A **subgroup** is a subset of a group that itself satisfies all four group axioms.
 
