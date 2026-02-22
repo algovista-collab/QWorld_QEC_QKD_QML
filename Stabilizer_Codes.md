@@ -155,8 +155,17 @@ For the states on the left, acting on the state by the corresponding operator le
 
 **Example:** Consider the Pauli operator $X \otimes Z$. From the equations above, it is quite easy to see that
 
-$$(X \otimes Z) |+\rangle \otimes |0\rangle = |+\rangle \otimes |0\rangle. \qquad (1)$$
+$$(X \otimes Z) |+\rangle \otimes |0\rangle = |+\rangle \otimes |0\rangle.$$
 
 The tensor product of the $+1$ eigenvectors of the individual operators gives a $+1$ eigenvector of the tensor-product operator. 
 
-$$(X \otimes Z) |-\rangle \otimes |1\rangle = (-1)^2 |-\rangle \otimes |1\rangle = |-\rangle \otimes |1\rangle. \qquad (2)$$
+$$(X \otimes Z) |-\rangle \otimes |1\rangle = (-1)^2 |-\rangle \otimes |1\rangle = |-\rangle \otimes |1\rangle.$$
+
+Any linear combination of these 2 states is also a +1 eigenstate of $$(X \otimes Z)$$
+
+<img width="790" height="75" alt="image" src="https://github.com/user-attachments/assets/f437fe4e-807d-4559-a52d-aa2e473fe67c" />
+
+<img width="1058" height="303" alt="image" src="https://github.com/user-attachments/assets/1e1e2d15-d694-415e-a767-a3ac4d59ca0d" />
+<img width="1058" height="303" alt="image" src="https://github.com/user-attachments/assets/1e1e2d15-d694-415e-a767-a3ac4d59ca0d" />
+
+<img width="790" height="75" alt="image" src="https://github.com/user-attachments/assets/f437fe4e-807d-4559-a52d-aa2e473fe67c" />
