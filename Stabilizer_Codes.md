@@ -240,7 +240,7 @@ Using the property that $X|+\rangle = |+\rangle$ and $X|-\rangle = -|-\rangle$:
 
 # Task 3: Commutation and Simultaneous Stabilizers
 
-To determine if two Pauli operators $P_1$ and $P_2$ share simultaneously stabilized states ($+1$ eigenstates), we check if they **commute**.
+To determine if two Pauli operators $P_1$ and $P_2$ share simultaneously stabilized states ($+1$ eigenstates), we check if they **commute**. $P_1$ and P_2$ are Pauli operators of $P_3$. $P_1 = Z_0 Z_1$ means $P_1 = Z \otimes Z \otimes I$ and $P_2 = X_0 X_1$ means $P_2 = X \otimes X \otimes I$   
 
 ## The General Rule
 * If $[P_1, P_2] = 0$ (**Commute**): They share a simultaneous eigenbasis.
