@@ -137,7 +137,7 @@ $$\mathcal{H} = \{Q \in \mathcal{P}_3 \text{ s.t. } Q = P^{(0)} \otimes I \otime
 
 # Stabilizer States
 
-The elements of the Pauli group have another important property that relates to quantum states. The eigenvalues and eigenvectors of Pauli matrices are:
+The eigenvalues and eigenvectors of Pauli matrices are:
 
 $$
 \begin{aligned}
@@ -153,12 +153,10 @@ For the states on the left, acting on the state by the corresponding operator le
 
 > Given $P \in \mathcal{P}_n$, a state $|\psi\rangle$ such that $P|\psi\rangle = |\psi\rangle$, is called a **stabilizer state** of $P$.
 
-Let's look at some examples for $n > 1$.
-
 **Example:** Consider the Pauli operator $X \otimes Z$. From the equations above, it is quite easy to see that
 
 $$(X \otimes Z) |+\rangle \otimes |0\rangle = |+\rangle \otimes |0\rangle. \qquad (1)$$
 
-The tensor product of the $+1$ eigenvectors of the individual operators gives a $+1$ eigenvector of the tensor-product operator. But, wait, there is more.
+The tensor product of the $+1$ eigenvectors of the individual operators gives a $+1$ eigenvector of the tensor-product operator. 
 
 $$(X \otimes Z) |-\rangle \otimes |1\rangle = (-1)^2 |-\rangle \otimes |1\rangle = |-\rangle \otimes |1\rangle. \qquad (2)$$
