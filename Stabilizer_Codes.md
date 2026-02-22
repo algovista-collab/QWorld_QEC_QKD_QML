@@ -318,3 +318,19 @@ The subset $S = \{P_0, P_1, P_2, P_3\}$ is defined by:
 * **No $-I$**: All products of these operators result in coefficients of $+1$, never $-1$.
 
 > **Note:** These properties are useful for defining a "protected" subspace of quantum states that are simultaneous $+1$ eigenstates of all operators in $S$.
+
+### Task 1: Multiplication Table for Subgroup $S$
+
+The following table demonstrates that the subset $S = \{I, P_1, P_2, P_3\}$ is closed under multiplication, confirming it is a subgroup of $\mathcal{P}_3$.
+
+| $\times$ | $I$   | $P_1$ | $P_2$ | $P_3$ |
+| :---:    | :---: | :---: | :---: | :---: |
+| **$I$** | $I$   | $P_1$ | $P_2$ | $P_3$ |
+| **$P_1$**| $P_1$ | $I$   | $P_3$ | $P_2$ |
+| **$P_2$**| $P_2$ | $P_3$ | $I$   | $P_1$ |
+| **$P_3$**| $P_3$ | $P_2$ | $P_1$ | $I$   |
+
+**Verification of Closure:**
+* $P_1 P_2 = (Z \otimes Z \otimes I)(Z \otimes I \otimes Z) = I \otimes Z \otimes Z = P_3$
+* $P_1 P_3 = (Z \otimes Z \otimes I)(I \otimes Z \otimes Z) = Z \otimes I \otimes Z = P_2$
+* $P_2 P_3 = (Z \otimes I \otimes Z)(I \otimes Z \otimes Z) = Z \otimes Z \otimes I = P_1$
