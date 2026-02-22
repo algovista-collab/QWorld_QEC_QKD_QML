@@ -239,7 +239,7 @@ Using the property that $X|+\rangle = |+\rangle$ and $X|-\rangle = -|-\rangle$:
 ---
 
 ## Task 3: Constraints on Simultaneous Stabilization
-Not all pairs of operators share simultaneously stabilized states.
+Not all pairs of operators share simultaneously stabilized states. They must commute and if they anti-commute no state can be a +1 eigenstate of both simultaneously.
 
 * **Case 1: $P_1 = Z_0 Z_1$ and $P_2 = X_0 X_1$**
     * These operators **commute** ($[P_1, P_2] = 0$).
