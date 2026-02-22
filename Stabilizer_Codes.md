@@ -456,7 +456,7 @@ To detect errors, we measure all the generators of the stabilizer group. Let's c
 
 If we measure $g_k$ on some state $|\phi\rangle$, then at the end of the measurement circuit, the qubits will be in state:
 
-$$|\Phi\rangle = (|\phi\rangle + g_k|\phi\rangle) |0\rangle + (|\phi\rangle - g_k|\phi\rangle) |1\rangle \qquad (1)$$
+$$|\Phi\rangle = (|\phi\rangle + g_k|\phi\rangle) |0\rangle + (|\phi\rangle - g_k|\phi\rangle) |1\rangle$$
 
 Where $|\phi\rangle$ is either the uncorrupted state $|\bar{\psi}\rangle$ or the corrupted state $E|\bar{\psi}\rangle$.
 
@@ -467,7 +467,7 @@ Where $|\phi\rangle$ is either the uncorrupted state $|\bar{\psi}\rangle$ or the
 ### Possibility 1: No error
 If there is no error, then $|\phi\rangle = |\bar{\psi}\rangle$. Since $g_k$ is a generator of the stabilizer for this state, $g_k|\bar{\psi}\rangle = |\bar{\psi}\rangle$. 
 
-Substituting this into Equation (1):
+Substituting this into Equation above:
 * The $|1\rangle$ component vanishes: $(|\bar{\psi}\rangle - |\bar{\psi}\rangle) = 0$.
 * The state becomes $|\Phi\rangle = |\bar{\psi}\rangle |0\rangle$.
 
@@ -476,7 +476,7 @@ Substituting this into Equation (1):
 ### Possibility 2 (a): $E$ commutes with $g_k$
 Now, $|\phi\rangle = E|\bar{\psi}\rangle$. If $E$ and $g_k$ commute ($g_k E = E g_k$):
 
-$$g_k |\phi\rangle = g_k (E |\bar{\psi}\rangle) = E g_k |\bar{\psi}\rangle = E |\bar{\psi}\rangle = |\phi\rangle \qquad (2)$$
+$$g_k |\phi\rangle = g_k (E |\bar{\psi}\rangle) = E g_k |\bar{\psi}\rangle = E |\bar{\psi}\rangle = |\phi\rangle$$
 
 **Result:** Since $g_k |\phi\rangle = |\phi\rangle$, we again find that $|\Phi\rangle = |\phi\rangle |0\rangle$. The ancilla will measure **0**, and the error is **not detected** by this generator.
 
@@ -484,7 +484,7 @@ $$g_k |\phi\rangle = g_k (E |\bar{\psi}\rangle) = E g_k |\bar{\psi}\rangle = E |
 
 Now, $|\phi\rangle = E |\bar{\psi}\rangle$. First note that
 
-$$g |\phi\rangle = g(E |\bar{\psi}\rangle) = -Eg |\bar{\psi}\rangle = -(E |\bar{\psi}\rangle) = - |\phi\rangle. \tag{3}$$
+$$g |\phi\rangle = g(E |\bar{\psi}\rangle) = -Eg |\bar{\psi}\rangle = -(E |\bar{\psi}\rangle) = - |\phi\rangle.$$
 
 Hence, $|\Phi\rangle = |\phi\rangle |1\rangle$. This time, the ancilla will measure 1.
 
@@ -496,7 +496,7 @@ Note, that any code is also immune to errors that don't change the state. For in
 
 ---
 
-## Task 2 (On paper)
+## Task 2
 
 Determine the commutation relations of single-qubit $X$ errors with the generators of the repetition code for bit-flips. Put 0 in the table if they commute, and 1 if they anti-commute.
 
@@ -507,7 +507,7 @@ Determine the commutation relations of single-qubit $X$ errors with the generato
 | $I \otimes X \otimes I$ | 1 | 1 |
 | $I \otimes I \otimes X$ | 0 | 1 |
 
-## Task 3 (On paper)
+## Task 3
 
 Determine the commutation relations of single-qubit $Z$ errors with the generators of the repetition code for phase-flips. Put 0 in the table if they commute, and 1 if they anti-commute.
 
