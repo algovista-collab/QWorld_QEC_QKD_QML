@@ -216,10 +216,42 @@ The identity ($I$) always contributes $+1$. We only need the product of $Z$ (qub
 ## 4. $Z \otimes X \otimes X \otimes Z$
 The product of all four eigenvalues must be $+1$. This happens with 0, 2, or 4 negative eigenvalues.
 
-| Negative Count | States |
-| :--- | :--- |
-| **0** | $|0++0\rangle$ |
-| **2** | $|0+-1\rangle, |0-+1\rangle, |0--0\rangle, |1++1\rangle, |1+-0\rangle, |1-+0\rangle$ |
-| **4** | $|1--1\rangle$ |
-
 **Basis:** $\{|0++0\rangle, |0+-1\rangle, |0-+1\rangle, |0--0\rangle, |1++1\rangle, |1+-0\rangle, |1-+0\rangle, |1--1\rangle\}$
+
+# Stabilizer States of Multiple Operators
+
+It is possible to construct quantum states that are **simultaneously stabilized** by multiple Pauli operators. This means the state $|\psi\rangle$ satisfies $P_i|\psi\rangle = +1|\psi\rangle$ for all operators $P_i$ in a given set.
+
+## Example: Simultaneous Stabilizers
+Consider the operators $P_1 = Z \otimes Z \otimes I$ and $P_2 = Z \otimes I \otimes Z$ in the Pauli group $\mathcal{P}_3$:
+
+* **$Z \otimes Z \otimes I$** stabilizes: $\{|000\rangle, |001\rangle, |110\rangle, |111\rangle\}$.
+* **$Z \otimes I \otimes Z$** stabilizes: $\{|000\rangle, |010\rangle, |101\rangle, |111\rangle\}$.
+
+The **intersection** of these sets is $\{|000\rangle, |111\rangle\}$. Any linear combination of these two states is stabilized by both $P_1$ and $P_2$. These states also form the basis for the quantum repetition code for bit-flip errors.
+
+---
+
+## Task 2: Simultaneous Stabilizers for $X$ Operators
+**Goal:** Determine the states simultaneously stabilized by $P_1 = X \otimes X \otimes I$ and $P_2 = X \otimes I \otimes X$.
+
+Using the property that $X|+\rangle = |+\rangle$ and $X|-\rangle = -|-\rangle$:
+* **States stabilized by $P_1$ ($X_0 X_1$):** $\{|++0\rangle, |++1\rangle, |--0\rangle, |--1\rangle\}$ (or any middle state in the $X$ basis: $\{|+++\rangle, |++-\rangle, |--+\rangle, |--- \rangle\}$).
+* **States stabilized by $P_2$ ($X_0 X_2$):** $\{| +0+\rangle, | +1+\rangle, | -0-\rangle, | -1-\rangle\}$ (or in $X$ basis: $\{|+++\rangle, |+-+\rangle, |-++\rangle, |--- \rangle\}$).
+
+**Simultaneous Stabilizer Basis:** $$\{|+++\rangle, |--- \rangle\}$$
+
+> **Note:** These are the basis states for the phase-flip repetition code.
+
+---
+
+## Task 3: Constraints on Simultaneous Stabilization
+Not all pairs of operators share simultaneously stabilized states.
+
+* **Case 1: $P_1 = Z_0 Z_1$ and $P_2 = X_0 X_1$**
+    * These operators **commute** ($[P_1, P_2] = 0$).
+    * Therefore, they **do** have simultaneously stabilized states (e.g., the Bell state $|\phi^+\rangle = \frac{|00\rangle + |11\rangle}{\sqrt{2}}$).
+
+* **Case 2: $P_1 = Z_0 Z_1$ and $P_2 = X_0 X_2$**
+    * Let's check the commutation: $Z_0$ and $X_0$ anti-commute, while $Z_1$ and $X_2$ act on different qubits.
+    * In this specific multi-qubit context, we must check if the total operators commute to determine if a simultaneous basis exists.
