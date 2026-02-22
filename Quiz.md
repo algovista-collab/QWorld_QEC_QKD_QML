@@ -295,3 +295,58 @@ $$Z \cdot X = ZX$$
 ## 3. Final Result
 The operator $HXZH$ simplifies to:
 **$ZX$** (which is also equal to $iY$)
+
+### **Q: How many simultaneous stabilizer states does the operator $Y \otimes Y \otimes Y$ have?**
+
+**A: 4**
+
+#### **Explanation**
+* **Hilbert Space Dimension:** For a system with $n$ qubits, the total number of possible states (the dimension of the Hilbert space) is $2^n$. For 3 qubits ($Y \otimes Y \otimes Y$), the total dimension is $2^3 = 8$.
+* **Eigenvalue Split:** Any Pauli operator (other than the identity) acting on $n$ qubits splits the Hilbert space exactly in half. One half belongs to the $+1$ eigenvalue, and the other half belongs to the $-1$ eigenvalue.
+* **Stabilizer Definition:** A "stabilizer state" is a state that is an eigenstate of the operator with an eigenvalue of $+1$.
+* **Calculation:** Total states divided by 2 gives the number of $+1$ eigenstates:
+    $$\frac{2^3}{2} = \frac{8}{2} = 4$$
+
+<img width="383" height="330" alt="image" src="https://github.com/user-attachments/assets/8caecd41-72dc-4f04-b995-e2ba902d0404" />
+
+## 1. Requirement Checklist
+To be valid generators for a stabilizer group $\mathcal{S}$, the operators must satisfy:
+* **Elements of the Pauli Group:** They must be tensor products of $I, X, Y, Z$.
+* **Pairwise Commutation:** $[g_i, g_j] = 0$ for all $i, j$.
+* **Consistency:** The set must not generate $-I$ (the "all-negative" identity).
+* **Independence:** No generator can be expressed as a product of the others.
+
+---
+
+## 2. Pairwise Commutation Check
+We define the generators as:
+* $g_1 = X \otimes Z \otimes Z$
+* $g_2 = X \otimes I \otimes I$
+* $g_3 = I \otimes X \otimes X$
+
+### $g_1$ and $g_2$
+* **Pos 1:** $X$ vs $X$ (Commute)
+* **Pos 2:** $Z$ vs $I$ (Commute)
+* **Pos 3:** $Z$ vs $I$ (Commute)
+* **Result:** **Commute**
+
+### $g_2$ and $g_3$
+* **Pos 1:** $X$ vs $I$ (Commute)
+* **Pos 2:** $I$ vs $X$ (Commute)
+* **Pos 3:** $I$ vs $X$ (Commute)
+* **Result:** **Commute**
+
+### $g_1$ and $g_3$
+* **Pos 1:** $X$ vs $I$ (Commute)
+* **Pos 2:** $Z$ vs $X$ (Anticommute: $ZX = -XZ$)
+* **Pos 3:** $Z$ vs $X$ (Anticommute: $ZX = -XZ$)
+* **Math:** $(-1)^2 = +1$. Since there are an **even number** of anticommuting positions, the operators commute overall.
+* **Result:** **Commute**
+
+---
+
+## 3. Independence and Consistency
+* **Independence:** There is no combination of products (e.g., $g_1 g_2$) that results in $g_3$. For instance, $g_1 g_2 = I \otimes Z \otimes Z$, which is distinct from $g_3$.
+* **Consistency:** Since all generators have a $+1$ phase and pairwise commute, their product will never yield $-I$.
+
+### Conclusion: **True**
