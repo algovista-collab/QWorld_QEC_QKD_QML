@@ -286,3 +286,35 @@ Since there is only **one** (an odd number) anti-commuting pair at index 0, the 
 $$(Z_0 Z_1 I_2)(X_0 I_1 X_2) = -(X_0 I_1 X_2)(Z_0 Z_1 I_2)$$
 
 **Result:** **No.** They cannot have simultaneously stabilized states.
+
+# Stabilizer Groups
+
+Among the many subgroups of the Pauli group $\mathcal{P}_n$, there is a particular type of subgroup called the **stabilizer group** $S$. 
+
+In addition to the standard group axioms, a stabilizer group must satisfy two specific properties:
+
+### Core Properties
+* **Commutativity**: All pairs of elements in $S$ commute. 
+    * For every $P, Q \in S$, we have $PQ = QP$.
+* **Consistency**: The negative identity $-I$ is **not** a part of $S$.
+    * $-I = -I_0 \otimes I_1 \otimes \cdots \otimes I_{n-1} \notin S$.
+
+---
+
+### Example: $n=3$ Qubits
+To build intuition, consider the following subset $S$ of the Pauli group $\mathcal{P}_3$:
+
+#### Group Elements
+The subset $S = \{P_0, P_1, P_2, P_3\}$ is defined by:
+
+1.  **$P_0 = I \otimes I \otimes I$** (The identity)
+2.  **$P_1 = Z \otimes Z \otimes I$**
+3.  **$P_2 = Z \otimes I \otimes Z$**
+4.  **$P_3 = I \otimes Z \otimes Z$**
+
+#### Observations
+* **Closure**: Notice that $P_1 \cdot P_2 = (Z \cdot Z) \otimes (Z \cdot I) \otimes (I \cdot Z) = I \otimes Z \otimes Z = P_3$.
+* **Commutativity**: Since all elements are composed of $I$ and $Z$ operators (and $[Z, I] = 0$), all elements in this specific $S$ commute.
+* **No $-I$**: All products of these operators result in coefficients of $+1$, never $-1$.
+
+> **Note:** These properties are useful for defining a "protected" subspace of quantum states that are simultaneous $+1$ eigenstates of all operators in $S$.
