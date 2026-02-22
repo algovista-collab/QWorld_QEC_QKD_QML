@@ -371,4 +371,10 @@ A stabilizer group defines a set of operators, and we seek the quantum states si
 * **$I$**: Stabilizes all states.
 * **$Z \otimes Z \otimes I$** and **$I \otimes Z \otimes Z$**: Jointly stabilize $\{|000\rangle, |111\rangle\}$.
 * **$Z \otimes I \otimes Z$**: Has stabilizer states $\{|000\rangle, |010\rangle, |101\rangle, |111\rangle\}$.
-* **Common Intersection**: The common state stabilized by all elements is $\{|000\rangle, |111\rangle\}$.
+* **Common Intersection**: The common state stabilized by all elements is $\{|000\rangle, |111\rangle\}$. The group S stabilizes these states and any of their linear combinations.
+
+#### Generators are Sufficient
+We only need to determine states stabilized by the **generators** to find the states stabilized by the entire group:
+* If $P_1$ and $P_2$ stabilize $|\psi\rangle$, then any product of them (any $h \in S$) also stabilizes $|\psi\rangle$.
+* If a generator does not stabilize a state, that state cannot be in the final set.
+* **Lemma**: The basis of states stabilized by $S$ is the intersection of states stabilized by its generators.
