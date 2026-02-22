@@ -334,3 +334,28 @@ The following table demonstrates that the subset $S = \{I, P_1, P_2, P_3\}$ is c
 * $P_1 P_2 = (Z \otimes Z \otimes I)(Z \otimes I \otimes Z) = I \otimes Z \otimes Z = P_3$
 * $P_1 P_3 = (Z \otimes Z \otimes I)(I \otimes Z \otimes Z) = Z \otimes I \otimes Z = P_2$
 * $P_2 P_3 = (Z \otimes I \otimes Z)(I \otimes Z \otimes Z) = Z \otimes Z \otimes I = P_1$
+
+# Generators of a Group
+
+Generators are a subset of elements used to construct every other element within the group. They are not unique.
+
+### Example: $P_1$ and $P_2$ as Generators
+In the subgroup $S$ defined above, every element can be expressed as a product of $P_1$ and $P_2$:
+* **Identity**: $I = P_1^2 = P_2^2$
+* **$P_1$**: $Z \otimes Z \otimes I = P_1$
+* **$P_2$**: $I \otimes Z \otimes Z = P_2$
+* **$P_3$**: $Z \otimes I \otimes Z = P_1 P_2$
+
+### Example: $P_1$ and $P_3$ as Generators
+We can also generate the group using $\{P_1, P_3\}$:
+* **Identity**: $I = P_1^2 = P_3^2$
+* **$P_1$**: $P_1$
+* **$P_2$**: $P_1 P_3$
+* **$P_3$**: $P_3$
+
+### Advantages of Generators
+Using generators reduces the storage space required to specify a group because of two properties:
+1.  **Commutativity**: All elements in a stabilizer group commute.
+2.  **Pauli Property**: For all Pauli operators, $P^2$ is either $I$ or $-I$.
+
+For a stabilizer group $S$ with generators $\{g_i\}_{i=0}^{m-1}$, any element $h \in S$ can be written as a product of these generators.
