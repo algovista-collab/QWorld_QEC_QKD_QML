@@ -134,3 +134,33 @@ A common subgroup structure in 3-qubit systems involves fixing one position:
 $$\mathcal{H} = \{Q \in \mathcal{P}_3 \text{ s.t. } Q = P^{(0)} \otimes I \otimes P^{(2)}\}$$
 * **Identity:** $I \otimes I \otimes I$ is included.
 * **Inverses:** If $Q$ is in the set, $Q^{-1}$ is also of the form $P^{(0)^{-1}} \otimes I \otimes P^{(2)^{-1}}$.
+
+# Stabilizer States
+
+The elements of the Pauli group have another important property that relates to quantum states, which we will study now. In the next section, we will use the notions introduced here to construct stabilizer groups.
+
+We will need to recall the eigenvectors and eigenvalues of $X, Y, Z$ are:
+
+$$
+\begin{aligned}
+X|+\rangle &= |+\rangle, & X|-\rangle &= -|-\rangle, \\
+Y|+i\rangle &= |+i\rangle, & Y|-i\rangle &= -|-i\rangle, \\
+Z|0\rangle &= |0\rangle, & Z|1\rangle &= -|1\rangle.
+\end{aligned}
+$$
+
+## Stabilizer states
+
+In the equations above, the ones on the left are $+1$ eigenstates. This means acting on the state by the corresponding operator leaves the state unchanged (even accounting for a phase). We are going to give a special name to such states.
+
+> Given $P \in \mathcal{P}_n$, a state $|\psi\rangle$ such that $P|\psi\rangle = |\psi\rangle$, is called a **stabilizer state** of $P$.
+
+Let's look at some examples for $n > 1$.
+
+**Example:** Consider the Pauli operator $X \otimes Z$. From the equations above, it is quite easy to see that
+
+$$(X \otimes Z) |+\rangle \otimes |0\rangle = |+\rangle \otimes |0\rangle. \qquad (1)$$
+
+The tensor product of the $+1$ eigenvectors of the individual operators gives a $+1$ eigenvector of the tensor-product operator. But, wait, there is more.
+
+$$(X \otimes Z) |-\rangle \otimes |1\rangle = (-1)^2 |-\rangle \otimes |1\rangle = |-\rangle \otimes |1\rangle. \qquad (2)$$
