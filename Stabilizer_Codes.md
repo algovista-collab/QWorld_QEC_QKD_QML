@@ -166,6 +166,60 @@ Any linear combination of these 2 states is also a +1 eigenstate of $$(X \otimes
 <img width="790" height="75" alt="image" src="https://github.com/user-attachments/assets/f437fe4e-807d-4559-a52d-aa2e473fe67c" />
 
 <img width="1058" height="303" alt="image" src="https://github.com/user-attachments/assets/1e1e2d15-d694-415e-a767-a3ac4d59ca0d" />
-<img width="1058" height="303" alt="image" src="https://github.com/user-attachments/assets/1e1e2d15-d694-415e-a767-a3ac4d59ca0d" />
 
-<img width="790" height="75" alt="image" src="https://github.com/user-attachments/assets/f437fe4e-807d-4559-a52d-aa2e473fe67c" />
+# Task 1: Stabilizer States Basis
+
+To find the basis of the stabilizer states for an operator $S$, we identify the states $|\psi\rangle$ such that $S|\psi\rangle = +1|\psi\rangle$. 
+
+Recall the following eigenvalue properties:
+* $X|+\rangle = +1|+\rangle$, $X|-\rangle = -1|-\rangle$
+* $Z|0\rangle = +1|0\rangle$, $Z|1\rangle = -1|1\rangle$
+* $I|\psi\rangle = +1|\psi\rangle$ (for any $|\psi\rangle$)
+
+For a tensor product operator, the total eigenvalue is the product of the individual eigenvalues. To get a $+1$, you must have an **even number** of $-1$ eigenvalues.
+
+---
+
+## 1. $X \otimes X \otimes X$
+The product of three $X$ eigenvalues must be $+1$. This occurs if there are 0 or 2 negative eigenvalues.
+
+* **0 negatives:** $|+\rangle|+\rangle|+\rangle$
+* **2 negatives:** * $|+\rangle|-\rangle|-\rangle$
+  * $|-\rangle|+\rangle|-\rangle$
+  * $|-\rangle|-\rangle|+\rangle$
+
+**Basis:** $\{|+++\rangle, |+--\rangle, |-+-\rangle, |--+\rangle\}$
+
+---
+
+## 2. $Z \otimes Z \otimes Z$
+The product of three $Z$ eigenvalues must be $+1$. This occurs if there are 0 or 2 negative eigenvalues ($|1\rangle$ states).
+
+* **0 negatives:** $|0\rangle|0\rangle|0\rangle$
+* **2 negatives:** * $|0\rangle|1\rangle|1\rangle$
+  * $|1\rangle|0\rangle|1\rangle$
+  * $|1\rangle|1\rangle|0\rangle$
+
+**Basis:** $\{|000\rangle, |011\rangle, |101\rangle, |110\rangle\}$
+
+---
+
+## 3. $Z \otimes I \otimes X$
+The identity ($I$) always contributes $+1$. We only need the product of $Z$ (qubit 1) and $X$ (qubit 3) to be $+1$.
+* **(+1, +1):** $|0\rangle|0\rangle|+\rangle$ and $|0\rangle|1\rangle|+\rangle$
+* **(-1, -1):** $|1\rangle|0\rangle|-\rangle$ and $|1\rangle|1\rangle|-\rangle$
+
+**Basis:** $\{|00+\rangle, |01+\rangle, |10-\rangle, |11-\rangle\}$
+
+---
+
+## 4. $Z \otimes X \otimes X \otimes Z$
+The product of all four eigenvalues must be $+1$. This happens with 0, 2, or 4 negative eigenvalues.
+
+| Negative Count | States |
+| :--- | :--- |
+| **0** | $|0++0\rangle$ |
+| **2** | $|0+-1\rangle, |0-+1\rangle, |0--0\rangle, |1++1\rangle, |1+-0\rangle, |1-+0\rangle$ |
+| **4** | $|1--1\rangle$ |
+
+**Basis:** $\{|0++0\rangle, |0+-1\rangle, |0-+1\rangle, |0--0\rangle, |1++1\rangle, |1+-0\rangle, |1-+0\rangle, |1--1\rangle\}$
