@@ -381,7 +381,7 @@ We only need to determine states stabilized by the **generators** to find the st
 
 Stabilizer codes are defined with respect to a stabilizer group $S$. We label the stabilizer code based on $S$ as $C(S)$. Then, the ingredients for $C(S)$ are
 
-* **Encoding:** The simultaneous stabilizer states of the stabilizer group $S$ define the basis elements of the codespace. An encoding circuit can be systematically constructed using the generators of $S$; a procedure we will show later.
+* **Encoding:** The simultaneous stabilizer states of the stabilizer group $S$ define the basis elements of the codespace. An encoding circuit can be systematically constructed using the generators of $S$;
 * **Syndrome measurements:** All generators of $S$ are measured one by one. The results of the measurement indicate which error has occurred.
 * **Decoding:** Decoding is also based on $S$.
 * **Logical gates:** These can also be constructed from $S$.
