@@ -261,6 +261,16 @@ To check commutation for tensor products, count the number of qubit positions wh
 Since there are **two** (an even number) anti-commuting pairs, the overall operators commute:
 $$(Z_0 Z_1)(X_0 X_1) = (-1)(-1)(X_0 X_1)(Z_0 Z_1) = (X_0 X_1)(Z_0 Z_1)$$
 
+1. **Check $Z_0 Z_1$**: 
+   - $Z_0 Z_1 |00\rangle = (+1)(+1)|00\rangle = |00\rangle$
+   - $Z_0 Z_1 |11\rangle = (-1)(-1)|11\rangle = |11\rangle$
+   - Total: $Z_0 Z_1 |\phi^+\rangle = +1|\phi^+\rangle$
+
+2. **Check $X_0 X_1$**:
+   - $X_0 X_1 |00\rangle = |11\rangle$
+   - $X_0 X_1 |11\rangle = |00\rangle$
+   - Total: $X_0 X_1 |\phi^+\rangle = \frac{1}{\sqrt{2}}(|11\rangle + |00\rangle) = +1|\phi^+\rangle$
+
 **Result:** **Yes.** They share simultaneous stabilized states, such as the Bell state $|\phi^+\rangle = \frac{|00\rangle + |11\rangle}{\sqrt{2}}$.
 
 ---
