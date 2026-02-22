@@ -238,13 +238,41 @@ Using the property that $X|+\rangle = |+\rangle$ and $X|-\rangle = -|-\rangle$:
 
 ---
 
-## Task 3: Constraints on Simultaneous Stabilization
-Not all pairs of operators share simultaneously stabilized states. They must commute and if they anti-commute no state can be a +1 eigenstate of both simultaneously.
+# Task 3: Commutation and Simultaneous Stabilizers
 
-* **Case 1: $P_1 = Z_0 Z_1$ and $P_2 = X_0 X_1$**
-    * These operators **commute** ($[P_1, P_2] = 0$).
-    * Therefore, they **do** have simultaneously stabilized states (e.g., the Bell state $|\phi^+\rangle = \frac{|00\rangle + |11\rangle}{\sqrt{2}}$).
+To determine if two Pauli operators $P_1$ and $P_2$ share simultaneously stabilized states ($+1$ eigenstates), we check if they **commute**.
 
-* **Case 2: $P_1 = Z_0 Z_1$ and $P_2 = X_0 X_2$**
-    * Let's check the commutation: $Z_0$ and $X_0$ anti-commute, while $Z_1$ and $X_2$ act on different qubits.
-    * In this specific multi-qubit context, we must check if the total operators commute to determine if a simultaneous basis exists.
+## The General Rule
+* If $[P_1, P_2] = 0$ (**Commute**): They share a simultaneous eigenbasis.
+* If $\{P_1, P_2\} = 0$ (**Anti-commute**): They cannot share a simultaneous $+1$ eigenstate.
+
+To check commutation for tensor products, count the number of qubit positions where the individual Pauli operators anti-commute (e.g., $X$ vs $Z$). 
+* **Even number** of anti-commutations $\rightarrow$ Operators **Commute**.
+* **Odd number** of anti-commutations $\rightarrow$ Operators **Anti-commute**.
+
+---
+
+## 1. Do $P_1 = Z_0 Z_1$ and $P_2 = X_0 X_1$ have simultaneous states?
+
+**Analysis:**
+* **Qubit 0:** $Z$ and $X$ anti-commute (1).
+* **Qubit 1:** $Z$ and $X$ anti-commute (2).
+
+Since there are **two** (an even number) anti-commuting pairs, the overall operators commute:
+$$(Z_0 Z_1)(X_0 X_1) = (-1)(-1)(X_0 X_1)(Z_0 Z_1) = (X_0 X_1)(Z_0 Z_1)$$
+
+**Result:** **Yes.** They share simultaneous stabilized states, such as the Bell state $|\phi^+\rangle = \frac{|00\rangle + |11\rangle}{\sqrt{2}}$.
+
+---
+
+## 2. What about $P_1 = Z_0 Z_1$ and $P_2 = X_0 X_2$?
+
+**Analysis:**
+* **Qubit 0:** $Z$ and $X$ anti-commute (1).
+* **Qubit 1:** $Z$ (from $P_1$) and $I$ (from $P_2$) commute.
+* **Qubit 2:** $I$ (from $P_1$) and $X$ (from $P_2$) commute.
+
+Since there is only **one** (an odd number) anti-commuting pair at index 0, the operators anti-commute:
+$$(Z_0 Z_1 I_2)(X_0 I_1 X_2) = -(X_0 I_1 X_2)(Z_0 Z_1 I_2)$$
+
+**Result:** **No.** They cannot have simultaneously stabilized states.
