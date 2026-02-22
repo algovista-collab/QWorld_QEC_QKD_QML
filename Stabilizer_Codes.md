@@ -359,3 +359,16 @@ Using generators reduces the storage space required to specify a group because o
 2.  **Pauli Property**: For all Pauli operators, $P^2$ is either $I$ or $-I$.
 
 For a stabilizer group $S$ with generators $\{g_i\}_{i=0}^{m-1}$, any element $h \in S$ can be written as a product of these generators.
+
+> **Lemma**: If a stabilizer group $S$ has $m$ independent generators, it contains $2^m$ elements.
+
+---
+
+### States Stabilized by Stabilizer Groups
+A stabilizer group defines a set of operators, and we seek the quantum states simultaneously stabilized (having a $+1$ eigenvalue) by all of them.
+
+**Example Analysis for $S = \{I, Z \otimes Z \otimes I, Z \otimes I \otimes Z, I \otimes Z \otimes Z\}$:**
+* **$I$**: Stabilizes all states.
+* **$Z \otimes Z \otimes I$** and **$I \otimes Z \otimes Z$**: Jointly stabilize $\{|000\rangle, |111\rangle\}$.
+* **$Z \otimes I \otimes Z$**: Has stabilizer states $\{|000\rangle, |010\rangle, |101\rangle, |111\rangle\}$.
+* **Common Intersection**: The common state stabilized by all elements is $\{|000\rangle, |111\rangle\}$.
