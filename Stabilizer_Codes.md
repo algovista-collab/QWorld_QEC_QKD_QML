@@ -378,3 +378,61 @@ We only need to determine states stabilized by the **generators** to find the st
 * If $P_1$ and $P_2$ stabilize $|\psi\rangle$, then any product of them (any $h \in S$) also stabilizes $|\psi\rangle$.
 * If a generator does not stabilize a state, that state cannot be in the final set.
 * **Lemma**: The basis of states stabilized by $S$ is the intersection of states stabilized by its generators.
+
+Stabilizer codes are defined with respect to a stabilizer group $S$. We label the stabilizer code based on $S$ as $C(S)$. Then, the ingredients for $C(S)$ are
+
+* **Encoding:** The simultaneous stabilizer states of the stabilizer group $S$ define the basis elements of the codespace. An encoding circuit can be systematically constructed using the generators of $S$; a procedure we will show later.
+* **Syndrome measurements:** All generators of $S$ are measured one by one. The results of the measurement indicate which error has occurred.
+* **Decoding:** Decoding is also based on $S$.
+* **Logical gates:** These can also be constructed from $S$.
+
+# Phase-Flip Repetition Code as a Stabilizer Code
+
+To show that the 3-qubit phase-flip repetition code is a stabilizer code, we define its code space and the corresponding stabilizer group $S$ that fixes every state within that space.
+
+## 1. The Code Space
+The phase-flip code protects against $Z$ errors by encoding logical states into the Hadamard (sign) basis. Let:
+- $|+\rangle = \frac{1}{\sqrt{2}}(|0\rangle + |1\rangle)$
+- $|-\rangle = \frac{1}{\sqrt{2}}(|0\rangle - |1\rangle)$
+
+The logical codewords are:
+- $|0_L\rangle = |+++\rangle$
+- $|1_L\rangle = |---\rangle$
+
+Any state in the code space is a linear combination $|\psi_L\rangle = \alpha|+++\rangle + \beta|---\rangle$.
+
+## 2. Defining the Stabilizer Group $S$
+A stabilizer $M$ must satisfy $M|\psi_L\rangle = |\psi_L\rangle$. For the phase-flip code, the stabilizers check for consistency in the $X$ basis. The generators of the stabilizer group $S$ are:
+
+1. $M_1 = X \otimes X \otimes I$ (or $X_1 X_2$)
+2. $M_2 = I \otimes X \otimes X$ (or $X_2 X_3$)
+
+## 3. Verification of Stability
+We verify that these generators stabilize the basis states:
+
+### For $|0_L\rangle = |+++\rangle$:
+- $M_1 |+++\rangle = (X|+\rangle)(X|+\rangle)|+\rangle = |+++\rangle$ (Since $X|+\rangle = |+\rangle$)
+- $M_2 |+++\rangle = |+\rangle(X|+\rangle)(X|+\rangle) = |+++\rangle$
+
+### For $|1_L\rangle = |---\rangle$:
+- $M_1 |---\rangle = (X|-\rangle)(X|-\rangle)|-\rangle = (-|-\rangle)(-\|-\rangle)|-\rangle = |---\rangle$ (Since $X|-\rangle = -|-\rangle$, and $(-1)^2 = 1$)
+- $M_2 |---\rangle = |-\rangle(X|-\rangle)(X|-\rangle) = |---\rangle$
+
+Because $M_1$ and $M_2$ stabilize both basis states, they stabilize the entire code space.
+
+## 4. Error Detection (Syndrome Measurements)
+Phase-flip errors ($Z$) anti-commute with $X$ operators ($ZX = -XZ$). We detect errors by measuring the eigenvalues of the stabilizers:
+
+| Error Type | $M_1$ ($X_1X_2$) | $M_2$ ($X_2X_3$) | Interpretation |
+| :--- | :---: | :---: | :--- |
+| **No Error** | $+1$ | $+1$ | No error detected |
+| **$Z_1$** (on Qubit 1) | $-1$ | $+1$ | $Z_1$ flips the sign of $M_1$ |
+| **$Z_2$** (on Qubit 2) | $-1$ | $-1$ | $Z_2$ flips the sign of both $M_1$ and $M_2$ |
+| **$Z_3$** (on Qubit 3) | $+1$ | $-1$ | $Z_3$ flips the sign of $M_2$ |
+
+---
+
+## Summary
+The phase-flip repetition code is a stabilizer code where the code space is the simultaneous $+1$ eigenspace of the group $S = \langle X_1X_2, X_2X_3 \rangle$. This matches the "ingredients" of a stabilizer code:
+- **Encoding:** Defined by the $+1$ eigenspace of $S$.
+- **Syndromes:** Measured via the generators of $S$.
