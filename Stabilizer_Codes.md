@@ -137,9 +137,7 @@ $$\mathcal{H} = \{Q \in \mathcal{P}_3 \text{ s.t. } Q = P^{(0)} \otimes I \otime
 
 # Stabilizer States
 
-The elements of the Pauli group have another important property that relates to quantum states, which we will study now. In the next section, we will use the notions introduced here to construct stabilizer groups.
-
-We will need to recall the eigenvectors and eigenvalues of $X, Y, Z$ are:
+The elements of the Pauli group have another important property that relates to quantum states. The eigenvalues and eigenvectors of Pauli matrices are:
 
 $$
 \begin{aligned}
@@ -151,7 +149,7 @@ $$
 
 ## Stabilizer states
 
-In the equations above, the ones on the left are $+1$ eigenstates. This means acting on the state by the corresponding operator leaves the state unchanged (even accounting for a phase). We are going to give a special name to such states.
+For the states on the left, acting on the state by the corresponding operator leaves the state unchanged (even accounting for a phase).
 
 > Given $P \in \mathcal{P}_n$, a state $|\psi\rangle$ such that $P|\psi\rangle = |\psi\rangle$, is called a **stabilizer state** of $P$.
 
