@@ -171,13 +171,6 @@ Any linear combination of these 2 states is also a +1 eigenstate of $$(X \otimes
 
 To find the basis of the stabilizer states for an operator $S$, we identify the states $|\psi\rangle$ such that $S|\psi\rangle = +1|\psi\rangle$. 
 
-Recall the following eigenvalue properties:
-* $X|+\rangle = +1|+\rangle$, $X|-\rangle = -1|-\rangle$
-* $Z|0\rangle = +1|0\rangle$, $Z|1\rangle = -1|1\rangle$
-* $I|\psi\rangle = +1|\psi\rangle$ (for any $|\psi\rangle$)
-
-For a tensor product operator, the total eigenvalue is the product of the individual eigenvalues. To get a $+1$, you must have an **even number** of $-1$ eigenvalues.
-
 ---
 
 ## 1. $X \otimes X \otimes X$
