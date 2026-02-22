@@ -436,3 +436,89 @@ Phase-flip errors ($Z$) anti-commute with $X$ operators ($ZX = -XZ$). We detect 
 The phase-flip repetition code is a stabilizer code where the code space is the simultaneous $+1$ eigenspace of the group $S = \langle X_1X_2, X_2X_3 \rangle$. This matches the "ingredients" of a stabilizer code:
 - **Encoding:** Defined by the $+1$ eigenspace of $S$.
 - **Syndromes:** Measured via the generators of $S$.
+
+# Theorem: Error Detection in Stabilizer Codes
+
+**Theorem:** Let $S$ be a stabilizer group, with generators $\{g_i\}$, and let $C(S)$ be the associated stabilizer code. Then $C(S)$ detects an error $E \in \mathcal{P}_n$ if it anti-commutes with at least one generator $g_k$ of $S$.
+
+---
+
+## Overview
+
+To detect errors, we measure all the generators of the stabilizer group. Let's concentrate on the measurement of just one generator $g_k$. There are three possibilities:
+
+1.  **No error has occurred** and the data qubits are in state $|\bar{\psi}\rangle$.
+2.  **Error $E$ has occurred**, and the data qubits are in state $E|\bar{\psi}\rangle$. The two sub-possibilities are:
+    * **(a)** $E$ commutes with $g_k$.
+    * **(b)** $E$ anti-commutes with $g_k$.
+
+## Syndrome Measurements: Mathematical Framework
+
+If we measure $g_k$ on some state $|\phi\rangle$, then at the end of the measurement circuit, the qubits will be in state:
+
+$$|\Phi\rangle = (|\phi\rangle + g_k|\phi\rangle) |0\rangle + (|\phi\rangle - g_k|\phi\rangle) |1\rangle \qquad (1)$$
+
+Where $|\phi\rangle$ is either the uncorrupted state $|\bar{\psi}\rangle$ or the corrupted state $E|\bar{\psi}\rangle$.
+
+---
+
+## Analysis of Possibilities
+
+### Possibility 1: No error
+If there is no error, then $|\phi\rangle = |\bar{\psi}\rangle$. Since $g_k$ is a generator of the stabilizer for this state, $g_k|\bar{\psi}\rangle = |\bar{\psi}\rangle$. 
+
+Substituting this into Equation (1):
+* The $|1\rangle$ component vanishes: $(|\bar{\psi}\rangle - |\bar{\psi}\rangle) = 0$.
+* The state becomes $|\Phi\rangle = |\bar{\psi}\rangle |0\rangle$.
+
+**Result:** Measuring the ancilla will yield **0**.
+
+### Possibility 2 (a): $E$ commutes with $g_k$
+Now, $|\phi\rangle = E|\bar{\psi}\rangle$. If $E$ and $g_k$ commute ($g_k E = E g_k$):
+
+$$g_k |\phi\rangle = g_k (E |\bar{\psi}\rangle) = E g_k |\bar{\psi}\rangle = E |\bar{\psi}\rangle = |\phi\rangle \qquad (2)$$
+
+**Result:** Since $g_k |\phi\rangle = |\phi\rangle$, we again find that $|\Phi\rangle = |\phi\rangle |0\rangle$. The ancilla will measure **0**, and the error is **not detected** by this generator.
+
+## Possibility 2 (b) $E$ anti-commutes with $g_k$
+
+Now, $|\phi\rangle = E |\bar{\psi}\rangle$. First note that
+
+$$g |\phi\rangle = g(E |\bar{\psi}\rangle) = -Eg |\bar{\psi}\rangle = -(E |\bar{\psi}\rangle) = - |\phi\rangle. \tag{3}$$
+
+Hence, $|\Phi\rangle = |\phi\rangle |1\rangle$. This time, the ancilla will measure 1.
+
+What we have discovered is that if and only if $E$ and $g_k$ anti-commute does the ancilla trigger. Therefore, it is quite easy to see that if at least one of $E$ and $\{g_i\}$ anti-commute, the code will detect the error.
+
+### A fourth possibility
+
+Note, that any code is also immune to errors that don't change the state. For instance, for the Shor code, we saw that errors like $Z_0 Z_1$ leave $|\bar{\psi}\rangle$ unchanged.
+
+---
+
+## Task 2 (On paper)
+
+Determine the commutation relations of single-qubit $X$ errors with the generators of the repetition code for bit-flips. Put 0 in the table if they commute, and 1 if they anti-commute.
+
+| Error \ Generator | $Z \otimes Z \otimes I$ | $I \otimes Z \otimes Z$ |
+| :--- | :---: | :---: |
+| $I \otimes I \otimes I$ | 0 | 0 |
+| $X \otimes I \otimes I$ | 1 | 0 |
+| $I \otimes X \otimes I$ | 1 | 1 |
+| $I \otimes I \otimes X$ | 0 | 1 |
+
+## Task 3 (On paper)
+
+Determine the commutation relations of single-qubit $Z$ errors with the generators of the repetition code for phase-flips. Put 0 in the table if they commute, and 1 if they anti-commute.
+
+| Error \ Generator | $X \otimes X \otimes I$ | $I \otimes X \otimes X$ |
+| :--- | :---: | :---: |
+| $I \otimes I \otimes I$ | 0 | 0 |
+| $Z \otimes I \otimes I$ | 1 | 0 |
+| $I \otimes Z \otimes I$ | 1 | 1 |
+| $I \otimes I \otimes Z$ | 0 | 1 |
+
+<img width="1122" height="648" alt="image" src="https://github.com/user-attachments/assets/4a2e4bf9-cc76-4b1c-a433-5b34c218171d" />
+
+<img width="1150" height="592" alt="image" src="https://github.com/user-attachments/assets/ef300794-2803-4c8d-a3e3-962b4dd267bd" />
+
