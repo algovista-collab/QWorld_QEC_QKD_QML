@@ -171,3 +171,74 @@ $$P_1 \cdot P_2 = (a \cdot d \oplus b \cdot c) \pmod 2$$
 #### 4. [[8, 3, 3]] — Color/Stabilizer Code
 - **Focus:** Density.
 - **Logic:** Often used in topological contexts or as a high-rate stabilizer code. It offers a better ratio of logical-to-physical qubits ($3/8$) while maintaining a distance of 3.
+
+# Encoding Circuits for Stabilizer Codes
+
+This guide outlines the systematic three-part process developed by Daniel Gottesman to transform a stabilizer generator matrix into a physical quantum encoding circuit.
+
+---
+
+## 1. Bringing the Generator Matrix to Standard Form
+
+The generator matrix $G$ of a stabilizer code (e.g., the $[[7,1,3]]$ Steane code) consists of $n-k$ rows and $2n$ columns. We use Gaussian elimination over $GF(2)$ to simplify these generators without changing the code they represent.
+
+### Permitted Operations:
+* **Row Addition:** Replacing a generator $M_i$ with $M_i \cdot M_j$ (corresponds to binary row addition).
+* **Row Permutation:** Reindexing the generators.
+* **Column Permutation:** Reindexing physical qubits (must be done simultaneously on both $X$ and $Z$ sides of the matrix).
+
+### The Goal:
+The matrix is reduced to **Reduced Row Echelon Form (RREF)** to produce the **Standard Form**:
+$$S = \begin{bmatrix} I & A & | & B & C_1 \\ 0 & 0 & | & D & I \end{bmatrix}$$
+This structure simplifies the generators to contain as few Pauli operators as possible.
+
+---
+
+## 2. Constructing Logical Operators
+
+Logical operators ($\bar{X}$ and $\bar{Z}$) allow us to manipulate encoded data. They must commute with all stabilizers but anti-commute with each other.
+
+For a code encoding $k$ logical qubits, we derive $k$ pairs of operators using the blocks identified in the Standard Form:
+
+* **Logical $\bar{X}$:** Constructed as the rows of the matrix $[0, E^T, I, | , E^T D^T + C_2^T, 0, 0]$.
+* **Logical $\bar{Z}$:** Constructed as the rows of the matrix $[0, 0, 0, | , A^T, I, 0]$.
+
+> **Note:** Logical operators are not unique; multiple representations can act identically on the logical basis states.
+
+---
+
+## 3. The Encoding Algorithm (Circuit Synthesis)
+
+Once the matrix and logical operators are defined, we follow a systematic gate sequence to map $n$ physical qubits from $|0\rangle^{\otimes n}$ to the logical zero state $|0\rangle_L$.
+
+### The Algorithm Steps:
+1. **Initialize:** Start with $n$ qubits in the $|0\rangle$ state.
+2. **Apply Logical $\bar{X}$ constraints:** For $i$ in range $k$, apply $CX$ gates between logical and ancilla qubits based on the $\bar{X}$ matrix.
+3. **Apply Stabilizer constraints:**
+   - Apply **Hadamard (H)** gates to create necessary superpositions.
+   - Apply **Controlled-NOT (CX)** gates where $X$ components exist in the standard generators.
+   - Apply **Controlled-Z (CZ)** gates where $Z$ components exist.
+   - If both $X$ and $Z$ exist for a qubit, apply both $CX$ and $CZ$.
+
+### Example: Steane Code [[7,1,3]] Logical Zero State
+Simulating the resulting circuit produces the following superposition of 8 basis states, each with amplitude $\approx 0.354$:
+
+| Basis State | Amplitude |
+| :--- | :--- |
+| `0000000` | 0.354 |
+| `1111000` | 0.354 |
+| `1100110` | 0.354 |
+| `0011110` | 0.354 |
+| `1010101` | 0.354 |
+| `0101101` | 0.354 |
+| `0110011` | 0.354 |
+| `1001011` | 0.354 |
+
+
+
+---
+
+## Summary of State Preparation
+To create the **Logical One State** $|1\rangle_L$, you can:
+1. Feed the $|1\rangle$ state into the encoding circuit.
+2. Apply the derived **Logical $\bar{X}$** operator to the already prepared $|0\rangle_L$ state.
