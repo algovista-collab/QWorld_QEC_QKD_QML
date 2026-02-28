@@ -89,3 +89,45 @@ This operator acts on **3 qubits**:
 | 2 | $X$ | 1 | 0 |
 
 **Vector Form:** $$(0, 0, 1 \ | \ 1, 1, 0)$$
+
+# Quantum Operator Binary Representation
+
+This formalism maps Pauli operators to binary vectors, allowing us to compute products and commutation relations using linear algebra over $GF(2)$.
+
+## 1. Representation Logic
+Each $n$-qubit Pauli operator is represented as a vector of length $2n$: $(x | z)$.
+- **X** corresponds to `(1 | 0)`
+- **Z** corresponds to `(0 | 1)`
+- **Y** (which is $iXZ$) corresponds to `(1 | 1)`
+- **I** corresponds to `(0 | 0)`
+
+---
+
+## 2. Operations
+
+### Multiplication (Vector Addition)
+Multiplying two operators corresponds to the **bitwise XOR** (addition modulo 2) of their binary vectors.
+
+**Example:** $X \times X = I$
+- $(1 | 0) + (1 | 0) = (0 | 0)$
+
+### Commutation (Symplectic Inner Product)
+To determine if two operators $P_1 = (a | b)$ and $P_2 = (c | d)$ commute, use the symplectic inner product:
+
+$$P_1 \cdot P_2 = (a \cdot d \oplus b \cdot c) \pmod 2$$
+
+- If result = **0**: Operators **Commute**
+- If result = **1**: Operators **Anti-commute**
+
+---
+
+## 3. Calculation Example
+
+**Operators:**
+- $P_1 = (10 | 01) \rightarrow (X \otimes Z)$
+- $P_2 = (01 | 00) \rightarrow (I \otimes X)$
+
+**Inner Product Calculation:**
+$$(10 \cdot 00) \oplus (01 \cdot 01) = 0 \oplus 1 = 1$$
+
+**Result:** The operators **anti-commute**.
