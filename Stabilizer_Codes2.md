@@ -44,8 +44,6 @@ This representation turns quantum mechanics problems into **linear algebra over 
 * This is the foundation for the **Stabilizer Formalism**, which is how we design and simulate almost all modern quantum error-correcting codes, like the Surface Code.
 * In this formulation, we ignore the phase of the operators, i.e. if P = v then so are -P = v and +iP = v and -iP = v
 
-# Vector Forms of Pauli Operators
-
 Following the stabilizer formalism, we represent $n$-qubit Pauli operators as binary vectors of length $2n$ in the form $(a|b)$, where $a$ tracks $X$ components and $b$ tracks $Z$ components.
 
 ## 1. $X_0 Z_0 X_1 Z_1$
