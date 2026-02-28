@@ -120,3 +120,19 @@ $$P_1 \cdot P_2 = (a \cdot d \oplus b \cdot c) \pmod 2$$
 $$(10 \cdot 00) \oplus (01 \cdot 01) = 0 \oplus 1 = 1$$
 
 **Result:** The operators **anti-commute**.
+
+### Symplectic Inner Product Calculation
+
+**Operators:**
+- $P_1 = (101 | 110)$ where $a=(1,0,1), b=(1,1,0)$
+- $P_2 = (011 | 111)$ where $c=(0,1,1), d=(1,1,1)$
+
+**Formula:**
+$$P_1 \cdot P_2 = (a \cdot d \oplus b \cdot c) \pmod 2$$
+
+**Step-by-Step:**
+1. **$a \cdot d$**: $(1 \cdot 1) + (0 \cdot 1) + (1 \cdot 1) = 2 \equiv 0$
+2. **$b \cdot c$**: $(1 \cdot 0) + (1 \cdot 1) + (0 \cdot 1) = 1 \equiv 1$
+3. **Total**: $0 \oplus 1 = 1$
+
+**Result:** **1** (Operators Anti-commute)
