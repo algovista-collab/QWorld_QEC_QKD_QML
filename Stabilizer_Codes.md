@@ -246,7 +246,7 @@ To determine if two Pauli operators $P_1$ and $P_2$ share simultaneously stabili
 * If $[P_1, P_2] = 0$ (**Commute**): They share a simultaneous eigenbasis.
 * If $\{P_1, P_2\} = 0$ (**Anti-commute**): They cannot share a simultaneous $+1$ eigenstate.
 
-To check commutation for tensor products, count the number of qubit positions where the individual Pauli operators anti-commute (e.g., $X$ vs $Z$). 
+To check commutation for tensor products, count the number of qubit positions where the individual Pauli operators anti-commute ($X$ vs $Z$). 
 * **Even number** of anti-commutations $\rightarrow$ Operators **Commute**.
 * **Odd number** of anti-commutations $\rightarrow$ Operators **Anti-commute**.
 
