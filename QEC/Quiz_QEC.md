@@ -448,3 +448,23 @@ $$n = 11$$
 The value of **$n$ is 11**. 
 
 This code would be described using the notation **$[[11, 3, d]]$**, where $d$ represents the code distance (the minimum number of physical errors required to create a logical error).
+
+<img width="901" height="67" alt="image" src="https://github.com/user-attachments/assets/19c68fed-fc59-4546-b8cd-a65a9d7698d8" />
+
+In the Gottesman-Cleve-Gottesman method, the standard form of the stabilizer generator matrix $S$ is defined by its block structure:
+
+$$S = \begin{bmatrix} I_r & A & | & B & C \\ 0 & 0 & | & D & I_{n-k-r} \end{bmatrix}$$
+
+For the **[[5, 1, 3]]** code:
+* **$n = 5$** (number of physical qubits).
+* **$k = 1$** (number of logical qubits).
+* **$n - k = 4$** (number of stabilizer generators).
+
+When bringing this specific code's generator matrix into standard form, the rank of the $X$ part (the first $n$ columns) is determined through Gaussian reduction. For the [[5,1,3]] code, the rank $r$ is:
+
+**$r = 4$**.
+
+### Explanation:
+- The value $r$ represents the rank of the $X$ part of the generator matrix.
+- In the standard form reduction, the matrix is partitioned into blocks of size $r$ and $n-k-r$.
+- Since $n-k = 4$ and $r = 4$, the second row of the standard form block ($n-k-r$) becomes $0$ rows. This simplifies the encoding process as it minimizes the number of qubits that require specialized phase-tracking or $Z$-only stabilizer constraints.
