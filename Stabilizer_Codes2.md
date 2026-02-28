@@ -90,17 +90,6 @@ This operator acts on **3 qubits**:
 
 **Vector Form:** $$(0, 0, 1 \ | \ 1, 1, 0)$$
 
-# Quantum Operator Binary Representation
-
-This formalism maps Pauli operators to binary vectors, allowing us to compute products and commutation relations using linear algebra over $GF(2)$.
-
-## 1. Representation Logic
-Each $n$-qubit Pauli operator is represented as a vector of length $2n$: $(x | z)$.
-- **X** corresponds to `(1 | 0)`
-- **Z** corresponds to `(0 | 1)`
-- **Y** (which is $iXZ$) corresponds to `(1 | 1)`
-- **I** corresponds to `(0 | 0)`
-
 ---
 
 ## 2. Operations
