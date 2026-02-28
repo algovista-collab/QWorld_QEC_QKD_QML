@@ -242,3 +242,50 @@ Simulating the resulting circuit produces the following superposition of 8 basis
 To create the **Logical One State** $|1\rangle_L$, you can:
 1. Feed the $|1\rangle$ state into the encoding circuit.
 2. Apply the derived **Logical $\bar{X}$** operator to the already prepared $|0\rangle_L$ state.
+
+# Decoding Circuits for Stabilizer Codes
+
+While error correction often happens "in-place" during quantum computation (meaning we don't always need to decode to the computational basis), decoding is essential for **quantum communication protocols** where the logical state must be retrieved as a physical qubit.
+
+---
+
+## 1. Simple Decoding: Circuit Reversal
+The most straightforward way to decode is to simply run the encoding circuit in reverse.
+* **Logic**: If the encoding circuit $U$ maps $|0\dots0\psi\rangle \rightarrow |\psi\rangle_L$, then the adjoint circuit $U^\dagger$ maps $|\psi\rangle_L \rightarrow |0\dots0\psi\rangle$.
+* **Verification**: In the provided `stac` example, a random state is encoded into the Steane code and successfully retrieved by appending the `.reverse()` circuit.
+
+---
+
+## 2. Gottesman's Decoding Algorithm
+This method uses the **Standard Form** of the stabilizer generator matrix and extracts the logical information onto a separate **ancilla qubit**.
+
+### The Procedure:
+1. **Standard Form**: Compute the RREF of the generator matrix $G$.
+2. **Logical Operators**: Determine the Logical $\bar{X}$ and Logical $\bar{Z}$ operations.
+3. **Synthesis**:
+    - For each bit in the Logical $Z$ matrix, apply a `CX` from the physical qubit $j$ to the ancilla.
+    - For each bit in the Logical $X$ matrix, apply `CX` or `CZ` (or both) from the ancilla to the physical qubit.
+
+
+
+---
+
+## 3. Simulation Results & Observations
+* **Logical Zero ($|0\rangle_L$)**: After decoding, the decoding ancilla (the last qubit) returns to state `0`.
+* **Logical One ($|1\rangle_L$)**: After decoding, the decoding ancilla flips to state `1`.
+* **No-Cloning Theorem**: Upon decoding, the original physical qubits are left in a state outside the logical code space. This confirms that information was **transferred** to the ancilla, not copied.
+
+---
+
+# Task 1 Solution: Decoding the [[5,1,3]] Code
+
+To decode the $[[5,1,3]]$ "Perfect Code" using the `stac` library, follow these steps:
+
+### Step 1: Generate and Standardize
+```python
+import stac
+# Initialize the 5-qubit code
+cd_513 = stac.CommonCodes.generate_code('[[5,1,3]]')
+cd_513.construct_standard_form()
+cd_513.construct_logical_operators()
+```
