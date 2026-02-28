@@ -41,6 +41,53 @@ This representation turns quantum mechanics problems into **linear algebra over 
 * **Commutation:** You can determine if two operators commute by calculating the **symplectic inner product**. 
     * If the result is $0$, they commute.
     * If the result is $1$, they anti-commute.
+* This is the foundation for the **Stabilizer Formalism**, which is how we design and simulate almost all modern quantum error-correcting codes, like the Surface Code.
+* In this formulation, we ignore the phase of the operators, i.e. if P = v then so are -P = v and +iP = v and -iP = v
 
-> [!TIP]
-> This is the foundation for the **Stabilizer Formalism**, which is how we design and simulate almost all modern quantum error-correcting codes, like the Surface Code.
+# Vector Forms of Pauli Operators
+
+Following the stabilizer formalism, we represent $n$-qubit Pauli operators as binary vectors of length $2n$ in the form $(a|b)$, where $a$ tracks $X$ components and $b$ tracks $Z$ components.
+
+## 1. $X_0 Z_0 X_1 Z_1$
+This operator acts on **2 qubits**. We first simplify the components for each qubit:
+* **Qubit 0:** $X Z \rightarrow Y$ (contains both $X$ and $Z$ components)
+* **Qubit 1:** $X Z \rightarrow Y$ (contains both $X$ and $Z$ components)
+
+| Qubit | Operator | $a$ ($X$-bit) | $b$ ($Z$-bit) |
+| :--- | :--- | :--- | :--- |
+| 0 | $Y$ | 1 | 1 |
+| 1 | $Y$ | 1 | 1 |
+
+**Vector Form:** $$(1, 1 \ | \ 1, 1)$$
+
+---
+
+## 2. $Y_0 Y_1 Y_2$
+This operator acts on **3 qubits**. Since $Y$ contains both an $X$ and a $Z$ component:
+* **Qubit 0:** $Y \rightarrow a_0=1, b_0=1$
+* **Qubit 1:** $Y \rightarrow a_1=1, b_1=1$
+* **Qubit 2:** $Y \rightarrow a_2=1, b_2=1$
+
+| Qubit | Operator | $a$ ($X$-bit) | $b$ ($Z$-bit) |
+| :--- | :--- | :--- | :--- |
+| 0 | $Y$ | 1 | 1 |
+| 1 | $Y$ | 1 | 1 |
+| 2 | $Y$ | 1 | 1 |
+
+**Vector Form:** $$(1, 1, 1 \ | \ 1, 1, 1)$$
+
+---
+
+## 3. $Z_0 Z_1 X_2$
+This operator acts on **3 qubits**:
+* **Qubit 0:** $Z \rightarrow$ No $X$, has $Z$ ($a_0=0, b_0=1$)
+* **Qubit 1:** $Z \rightarrow$ No $X$, has $Z$ ($a_1=0, b_1=1$)
+* **Qubit 2:** $X \rightarrow$ Has $X$, no $Z$ ($a_2=1, b_2=0$)
+
+| Qubit | Operator | $a$ ($X$-bit) | $b$ ($Z$-bit) |
+| :--- | :--- | :--- | :--- |
+| 0 | $Z$ | 0 | 1 |
+| 1 | $Z$ | 0 | 1 |
+| 2 | $X$ | 1 | 0 |
+
+**Vector Form:** $$(0, 0, 1 \ | \ 1, 1, 0)$$
