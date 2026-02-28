@@ -136,3 +136,38 @@ $$P_1 \cdot P_2 = (a \cdot d \oplus b \cdot c) \pmod 2$$
 3. **Total**: $0 \oplus 1 = 1$
 
 **Result:** **1** (Operators Anti-commute)
+
+<img width="735" height="250" alt="image" src="https://github.com/user-attachments/assets/49935764-f9c1-48f4-ac2d-7bd59060ed97" />
+
+### Comparison of Key Stabilizer Codes
+
+| Code | Type | $n$ | $k$ | $d$ | Capability |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **[[4, 2, 2]]** | Detection | 4 | 2 | 2 | Detects 1 error; cannot correct. |
+| **[[5, 1, 3]]** | Perfect | 5 | 1 | 3 | Smallest code to correct 1 error. |
+| **[[7, 1, 3]]** | Steane | 7 | 1 | 3 | CSS code; allows transversal gates. |
+| **[[8, 3, 3]]** | High-Rate | 8 | 3 | 3 | Encodes 3 logical qubits; corrects 1 error. |
+
+---
+
+### Detailed Code Profiles
+
+#### 1. [[4, 2, 2]] — Error-Detecting Code
+- **Focus:** Hardware efficiency.
+- **Limitation:** Since $d=2$, it can tell you *that* an error happened, but not *where*. It is primarily used for post-selection (discarding faulty runs).
+
+#### 2. [[5, 1, 3]] — The "Perfect" Code
+- **Focus:** Minimum overhead.
+- **Logic:** Uses the smallest possible number of qubits to satisfy the Quantum Hamming Bound. It is a non-CSS code, meaning stabilizers mix $X$ and $Z$ on the same qubits.
+
+
+
+#### 3. [[7, 1, 3]] — The Steane Code
+- **Focus:** Fault tolerance.
+- **Logic:** Derived from the classical Hamming [7,4,3] code. Because it is a CSS code, $X$ and $Z$ errors are handled by separate, independent stabilizer checks.
+
+
+
+#### 4. [[8, 3, 3]] — Color/Stabilizer Code
+- **Focus:** Density.
+- **Logic:** Often used in topological contexts or as a high-rate stabilizer code. It offers a better ratio of logical-to-physical qubits ($3/8$) while maintaining a distance of 3.
