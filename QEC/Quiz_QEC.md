@@ -470,3 +470,41 @@ When bringing this specific code's generator matrix into standard form, the rank
 - Since $n-k = 4$ and $r = 4$, the second row of the standard form block ($n-k-r$) becomes $0$ rows. This simplifies the encoding process as it minimizes the number of qubits that require specialized phase-tracking or $Z$-only stabilizer constraints.
 
 <img width="693" height="967" alt="image" src="https://github.com/user-attachments/assets/1080ac7d-ed99-4262-a4f8-92e7448489ad" />
+
+<img width="428" height="562" alt="image" src="https://github.com/user-attachments/assets/80a9b11e-005c-44c3-9ffc-277834f82356" />
+
+## Finding the Generator Matrix
+
+**Setup:** H is a 3×5 parity-check matrix, so this is an [n,k] = [5,2] code (k = 5−3 = 2).
+
+### Step 1: Row-reduce H over GF(2)
+
+$$H = \begin{pmatrix}1&1&1&0&0\\0&1&0&1&0\\1&0&0&0&1\end{pmatrix}$$
+
+R₃ → R₃ + R₁, then R₃ → R₃ + R₂:
+
+$$\begin{pmatrix}1&1&1&0&0\\0&1&0&1&0\\0&0&1&1&1\end{pmatrix}$$
+
+Back-substitute to get RREF:
+
+$$\begin{pmatrix}1&0&0&0&1\\0&1&0&1&0\\0&0&1&1&1\end{pmatrix}$$
+
+### Step 2: Identify free variables
+
+Pivot columns: {1, 2, 3} → Free variables: **x₄, x₅**
+
+From RREF:
+- x₁ = x₅
+- x₂ = x₄
+- x₃ = x₄ + x₅
+
+### Step 3: Build the generator matrix
+
+| x₄ | x₅ | Codeword         |
+|----|----|------------------|
+| 1  | 0  | (0, 1, 1, 1, 0)  |
+| 0  | 1  | (1, 0, 1, 0, 1)  |
+
+$$\boxed{G = \begin{pmatrix}1&0&1&0&1\\0&1&1&1&0\end{pmatrix}}$$
+
+This is the **last option**. You can verify: every row of G satisfies HGᵀ = 0 over GF(2). ✓
