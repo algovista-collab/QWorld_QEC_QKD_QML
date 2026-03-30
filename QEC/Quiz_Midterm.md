@@ -4,6 +4,8 @@
 
 **Setup:** H is a 3×5 parity-check matrix, so this is an [n,k] = [5,2] code (k = 5−3 = 2).
 
+For any valid codeword, the rows of $G$ must pass the tests set by $H$. H . GT = 0. Our goal is to get the left side to look like an Identity Matrix (1s on the diagonal, 0s elsewhere).
+
 ### Step 1: Row-reduce H over GF(2)
 
 $$H = \begin{pmatrix}1&1&1&0&0\\0&1&0&1&0\\1&0&0&0&1\end{pmatrix}$$
@@ -12,13 +14,13 @@ R₃ → R₃ + R₁, then R₃ → R₃ + R₂:
 
 $$\begin{pmatrix}1&1&1&0&0\\0&1&0&1&0\\0&0&1&1&1\end{pmatrix}$$
 
-Back-substitute to get RREF:
+Back-substitute to get RREF R1 = R1+R2+R3:
 
 $$\begin{pmatrix}1&0&0&0&1\\0&1&0&1&0\\0&0&1&1&1\end{pmatrix}$$
 
 ### Step 2: Identify free variables
 
-Pivot columns: {1, 2, 3} → Free variables: **x₄, x₅**
+Pivot columns: {1, 2, 3} → Free variables: **x₄, x₅**. First 3 columns has leading zeros, 4th and 5th columns do not - hence x4 and x5 are the free variables. When x4 is 1 and x5 is 0, x1 = x5 so x1 is also 0, x2 is x4 so x2 is 1, x3 is x4+x5 = 1+0 = 1. Number of scenarios is determined by the number of free variables. H has 3 rows which provides 3 constraints, codeword is 5 bits long (n=5), number of bits that can be controlled is 5-3=2
 
 From RREF:
 - x₁ = x₅
