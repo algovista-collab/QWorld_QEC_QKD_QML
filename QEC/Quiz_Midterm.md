@@ -156,6 +156,79 @@ Because the Shor code treats each block of three qubits as a single logical unit
 
 <img width="636" height="298" alt="image" src="https://github.com/user-attachments/assets/940cd155-a369-4e0f-9b05-71dbd46a8289" />
 
+# Solving for Stabilizer States: $-Z \otimes X \otimes Y$
+
+To determine if a state $|\psi\rangle$ is a **stabilizer state** of an operator $S$, the following condition must be met:
+$$S|\psi\rangle = +1|\psi\rangle$$
+
+In this problem, our operator is:
+$$S = -(Z_1 \otimes X_2 \otimes Y_3)$$
+
+The negative sign at the front acts as a **multiplier of $-1$**. Therefore, for the final result to be $+1$, the combination of the three physical qubits must result in a total eigenvalue of **$-1$**.
+
+---
+
+### 1. The Reference Table (Eigenvalues)
+Recall how the Pauli operators act on their respective basis states:
+
+| Operator | State | Eigenvalue ($\lambda$) |
+| :--- | :--- | :--- |
+| **$Z$** | $\|0\rangle$ | $+1$ |
+| **$Z$** | $\|1\rangle$ | $-1$ |
+| **$X$** | $\|+\rangle$ | $+1$ |
+| **$X$** | $\|-\rangle$ | $-1$ |
+| **$Y$** | $\|+i\rangle$ | $+1$ |
+| **$Y$** | $\|-i\rangle$ | $-1$ |
+
+
+
+---
+
+### 2. The Logic Filter
+Since the operator has a leading minus sign, we use this formula:
+$$\text{Total Result} = (-1) \times (\lambda_1 \times \lambda_2 \times \lambda_3)$$
+
+For this to equal **$+1$**, the product $(\lambda_1 \times \lambda_2 \times \lambda_3)$ **must equal $-1$**.
+
+---
+
+### 3. Testing the Options
+
+#### Option A: $|0, +, -i\rangle$
+* **$Z|0\rangle \to +1$**
+* **$X|+\rangle \to +1$**
+* **$Y|-i\rangle \to -1$**
+* *Product:* $(+1) \cdot (+1) \cdot (-1) = -1$
+* *With leading minus:* $(-1) \cdot (-1) = \mathbf{+1}$ ✅
+
+#### Option B: $|1, +, +i\rangle$
+* **$Z|1\rangle \to -1$**
+* **$X|+\rangle \to +1$**
+* **$Y|+i\rangle \to +1$**
+* *Product:* $(-1) \cdot (+1) \cdot (+1) = -1$
+* *With leading minus:* $(-1) \cdot (-1) = \mathbf{+1}$ ✅
+
+#### Option C: $|1, -, -i\rangle$
+* **$Z|1\rangle \to -1$**
+* **$X|-\rangle \to -1$**
+* **$Y|-i\rangle \to -1$**
+* *Product:* $(-1) \cdot (-1) \cdot (-1) = -1$
+* *With leading minus:* $(-1) \cdot (-1) = \mathbf{+1}$ ✅
+
+#### Option D: $|0, -, +i\rangle$
+* **$Z|0\rangle \to +1$**
+* **$X|-\rangle \to -1$**
+* **$Y|+i\rangle \to +1$**
+* *Product:* $(+1) \cdot (-1) \cdot (+1) = -1$
+* *With leading minus:* $(-1) \cdot (-1) = \mathbf{+1}$ ✅
+
+---
+
+### Conclusion
+In this specific set, **all four options** satisfy the stabilizer condition. Each state produces a product of $-1$ across the three qubits, which is then flipped to $+1$ by the negative sign in front of the operator. 
+
+> **Note:** A single 3-qubit stabilizer defines a 4-dimensional subspace (half of the total $2^3=8$ dimensional space). That is why multiple distinct states can all be "stabilized" by the same operator.
+
 <img width="497" height="328" alt="image" src="https://github.com/user-attachments/assets/808721d0-e83a-4a38-8b5f-e677e8bd6feb" />
 
 <img width="713" height="345" alt="image" src="https://github.com/user-attachments/assets/3e54ada6-6231-475e-848c-c4b78fe29bdd" />
