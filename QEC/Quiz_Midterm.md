@@ -139,7 +139,7 @@ The Shor code protects against phase-flip errors by comparing the collective pha
 A $Z$ error on any qubit $i$ is detected if it **anti-commutes** with a stabilizer. Since $Z$ and $X$ anti-commute ($ZX = -XZ$):
 * A $Z$ error on **any** qubit in Block 1 ($\{3, 4, 5\}$) will anti-commute with both $S_1$ and $S_2$ because both stabilizers contain $X$ operators on those specific qubit positions.
 * Therefore, $Z_3$, $Z_4$, and $Z_5$ all produce the exact same syndrome: they trigger both phase-check stabilizers.
-* **$X_0$ and $X_1 X_2$:** These are bit-flip errors. They trigger the $ZZ$ stabilizers within Block 0. $X_0$ triggers $Z_0 Z_1$, while $X_1 X_2$ triggers $Z_0 Z_1$ and $Z_1 Z_2$ (the $X_1$ flips the syndrome of both, but $X_2$ flips it back for the second). They match.
+* **$X_0$ and $X_1 X_2$:** These are bit-flip errors. They trigger the $ZZ$ stabilizers within Block 0. X0 flips 0th bit - we get 100+011 and X1X2 flips 1 and 2 bits we get - 011+100 which is same X0, hence they match.
 
 ## 3. Evaluating the Options
 * **$Z_3$ and $Z_7$:** $Z_3$ is in Block 1 (triggers $S_1, S_2$), while $Z_7$ is in Block 2 (triggers only $S_2$). Their syndromes are different.
