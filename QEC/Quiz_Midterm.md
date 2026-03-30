@@ -434,8 +434,3 @@ Because the result is $1$, the two operators **anti-commute**.
 
 **Result:**
 **Anti-Commute**
-
-
-
-
-$$(1, 0, 1)$
