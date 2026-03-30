@@ -231,6 +231,62 @@ In this specific set, **all four options** satisfy the stabilizer condition. Eac
 
 <img width="497" height="328" alt="image" src="https://github.com/user-attachments/assets/808721d0-e83a-4a38-8b5f-e677e8bd6feb" />
 
+# Analysis of Stabilizer Groups
+
+A set of Pauli operators forms a **Stabilizer Group** if and only if it satisfies two conditions:
+1.  **Commutativity:** All elements in the set must commute with each other ($AB = BA$).
+2.  **Closure:** Multiplying any two elements in the set must result in another element already present in the set.
+
+---
+
+### 1. Evaluating the Options
+
+#### ❌ Option 1: $\{+II, +XX, +ZZ, +YY\}$
+* **The Issue:** Multiplication of $XX$ and $ZZ$.
+* **Math:** $(X \otimes X) \cdot (Z \otimes Z) = (XZ) \otimes (XZ)$.
+* Since $XZ = -iY$, we get: $(-iY) \otimes (-iY) = i^2(Y \otimes Y) = \mathbf{-YY}$.
+* **Result:** The set contains $+YY$, but the product is $-YY$. It is **not closed**.
+
+#### ✅ Option 2: $\{+III, +YYZ, +XXZ, -ZZI\}$
+* **Commutativity:** $YYZ$ and $XXZ$ have 2 differences ($Y$ vs $X$). Two anti-commutations cancel out. They commute.
+* **Math:** $(Y \cdot X) \otimes (Y \cdot X) \otimes (Z \cdot Z) = (-iZ) \otimes (-iZ) \otimes I = i^2(ZZI) = \mathbf{-ZZI}$.
+* **Result:** Since $-ZZI$ is in the set, this is a **valid group**.
+
+#### ✅ Option 3: $\{+IIII, +XIXI, +IZIZ, +XZXZ\}$
+* This is a classic 4-qubit stabilizer group. Every element has an even number of overlapping Pauli differences with the others, and it is perfectly closed under multiplication.
+
+#### ❌ Option 4: $\{+III, +XZX, +ZXX, +XZZ\}$
+* **Math:** $XZX \cdot ZXX = (XZ) \otimes (ZX) \otimes (XX) = (-iY) \otimes (iY) \otimes I = \mathbf{+YYI}$.
+* **Result:** $+YYI$ is not in the set. It is **not closed**.
+
+---
+
+### 2. Full Multiplication Table (Option 3)
+
+This table shows the result of multiplying the row operator by the column operator. Note that $I$ is the identity ($I^2=I$, $IX=X$, etc.).
+
+| $\cdot$ | **IIII** | **XIXI** | **IZIZ** | **XZXZ** |
+| :--- | :--- | :--- | :--- | :--- |
+| **IIII** | IIII | XIXI | IZIZ | XZXZ |
+| **XIXI** | XIXI | IIII | XZXZ | IZIZ |
+| **IZIZ** | IZIZ | XZXZ | IIII | XIXI |
+| **XZXZ** | XZXZ | IZIZ | XIXI | IIII |
+
+
+
+### Why Option 3 "Works"
+1.  **Identity:** The Identity ($IIII$) is present.
+2.  **Inverses:** Every Pauli operator is its own inverse ($A^2 = I$), so the diagonal is all $IIII$.
+3.  **Closure:** Look at the inner $3 \times 3$ grid (excluding Identity). Every product results in the "third" member of the set. For example, $(XIXI) \cdot (IZIZ) = XZXZ$. 
+4.  **Signs:** All products result in a $+1$ phase, which matches the signs given in the set.
+
+---
+
+### Summary Checklist
+* **Check Signs:** Does $A \cdot B$ result in the same $\pm$ sign as listed?
+* **Check Content:** Is the resulting Pauli string (e.g., $XZXZ$) actually in the list?
+* **Check Commutation:** Do they "clash" at an odd number of positions? (If yes, they anti-commute and cannot be in the same stabilizer group).
+
 <img width="713" height="345" alt="image" src="https://github.com/user-attachments/assets/3e54ada6-6231-475e-848c-c4b78fe29bdd" />
 
 # Stabilizer Group: Finding the Number of Generators
